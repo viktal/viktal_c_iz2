@@ -1,17 +1,17 @@
 #pragma once
 
-#include "emailfilter/date.h"
-#include "utils.h"
 #include <ctype.h>
 #include <string.h>
 #include <assert.h>
+#include "emailfilter/utils.h"
+#include "emailfilter/date.h"
 
 typedef struct emailfilterRecepients {
     char** emails;
     int size;
 }emailfilterRecepients;
 
-typedef struct emailfilterMessage{
+typedef struct emailfilterMessage {
     emailfilterDate* date;
     char* subject;
     emailfilterRecepients recepients;

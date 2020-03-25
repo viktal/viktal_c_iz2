@@ -1,9 +1,10 @@
 #pragma once
-#include "stdio.h"
-#include "string.h"
-#include "stdlib.h"
 
-typedef struct stream_buffer_state{
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+typedef struct stream_buffer_state {
     char *buffer;
     size_t buf_size;
 }stream_buffer_state;

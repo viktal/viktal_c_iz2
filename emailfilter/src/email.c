@@ -1,27 +1,24 @@
 #include "emailfilter/email.h"
 
-void parse_message(stream_buffer_state* stream_buffer, emailfilterMessage* mes, FILE* file)
-{
+void parse_message(stream_buffer_state* stream_buffer, emailfilterMessage* mes, FILE* file) {
     char* line = NULL;
-    if (strncmp(stream_buffer->buffer,"Date:", 5) == 0) {
+    if (strncmp(stream_buffer->buffer, "Date:", 5) == 0) {
         read_to_newline(file, stream_buffer, &line);
         // "Date: Tue, 09 Jan 2018 13:57:33 +0100\n"
         // offset = 11 чтобы пропустить Date и день недели
         int offset = 11;
-        line[offset + 20] = '\0'; // упускаем постфикс
+        line[offset + 20] = '\0';  // упускаем постфикс
         mes->date = read_date(line + offset);
-    }
-    else if (strncmp(stream_buffer->buffer,"Subject:", 8) == 0) {
+    } else if (strncmp(stream_buffer->buffer, "Subject:", 8) == 0) {
         read_to_newline(file, stream_buffer, &(line));
         // offset = 9 чтобы пропустить Subject:\space
         size_t size = strlen(line) - 9;
         mes->subject = (char*)malloc(size + 1);
         memmove(mes->subject, line + 9, size);
         mes->subject[size] = '\0';
-    }
-    else if (strncmp(stream_buffer->buffer,"To:", 3) == 0) {
+    } else if (strncmp(stream_buffer->buffer, "To:", 3) == 0) {
         read_to_newline(file, stream_buffer, &(line));
-        line[strlen(line)] = '\0'; // экранируем конец строки
+        line[strlen(line)] = '\0';  // экранируем конец строки
         parse_recepients(line + 4, &(mes->recepients));
     }
 
@@ -29,11 +26,10 @@ void parse_message(stream_buffer_state* stream_buffer, emailfilterMessage* mes, 
         free(line);
 }
 
-void print_mes(emailfilterMessage** messages, int size)
-{
-    for (int i = 0; i < size; i++){
+void print_mes(emailfilterMessage** messages, int size) {
+    for (int i = 0; i < size; i++) {
         printf("Sub: %s\nTo:", messages[i]->subject);
-        for (int j = 0; j < messages[i]->recepients.size; j++){
+        for (int j = 0; j < messages[i]->recepients.size; j++) {
             printf("%s ", messages[i]->recepients.emails[j]);
         }
         printf("\n");
@@ -42,8 +38,7 @@ void print_mes(emailfilterMessage** messages, int size)
     printf("\n%i messages in total\n", size);
 }
 
-bool message_end(emailfilterMessage* mes)
-{
+bool message_end(emailfilterMessage* mes) {
     if (mes->recepients.emails == NULL) return false;
     if (mes->date == NULL) return false;
     if (mes->subject == NULL) return false;

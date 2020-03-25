@@ -9,8 +9,7 @@
 #include "emailfilter/email.h"
 
 
-typedef struct emailfilterThreadWorkload
-{
+typedef struct emailfilterThreadWorkload {
     char* path;
     size_t start_index;
     size_t end_index;
@@ -20,13 +19,12 @@ typedef struct emailfilterThreadWorkload
     emailfilterParams* params;
 } emailfilterThreadWorkload;
 
-bool to_keep(emailfilterMessage* mes, emailfilterParams* params)
-{
-    if (compare_date(mes->date, params->begin) < 0)
+bool to_keep(emailfilterMessage* mes, emailfilterParams* params) {
+    if (compare_date(mes->date, params->begin) < 0) {
         return false;
-    else if (compare_date(mes->date, params->end) > 0)
+    } else if (compare_date(mes->date, params->end) > 0) {
         return false;
-    else {
+    } else {
         for (int i = 0; i < mes->recepients.size; i++) {
             if (strcmp(mes->recepients.emails[i], params->recepient) == 0)
                 return true;
@@ -44,10 +42,11 @@ void *thread(void *arg) {
 
     while (!feof(file)) {
         skip_to_new_line(file, stream_buffer);
-        if (strncmp(stream_buffer->buffer,"From ", 5) == 0) {
+        if (strncmp(stream_buffer->buffer, "From ", 5) == 0) {
             if (tw->real_num_mes >= tw->reserved_num_mes) {
                 tw->reserved_num_mes = tw->reserved_num_mes == 0 ? 1 : 2 * (tw->reserved_num_mes);
-                tw->list_mes = (emailfilterMessage**)realloc(tw->list_mes, tw->reserved_num_mes * sizeof(emailfilterMessage *));
+                tw->list_mes = (emailfilterMessage**)realloc(tw->list_mes,
+                        tw->reserved_num_mes * sizeof(emailfilterMessage *));
                 if (tw->list_mes == NULL) {
                     printf("error in realloc for message %d", tw->real_num_mes);
                     exit(EXIT_FAILURE);
@@ -58,14 +57,12 @@ void *thread(void *arg) {
             tw->list_mes[tw->real_num_mes]->subject = NULL;
             tw->list_mes[tw->real_num_mes]->date = NULL;
 
-            while(!message_end(tw->list_mes[tw->real_num_mes])){ // считать три элемента (subject, date, to)
+            while (!message_end(tw->list_mes[tw->real_num_mes])) {  // считать три элемента (subject, date, to)
                 skip_to_new_line(file, stream_buffer);
                 parse_message(stream_buffer, tw->list_mes[tw->real_num_mes], file);
             }
             if (to_keep(tw->list_mes[tw->real_num_mes], tw->params))
-                tw->real_num_mes ++;
-            long a = ftell(file);
-            long b = tw->end_index;
+                tw->real_num_mes++;
         }
 
         if (ftell(file) >= tw->end_index)
@@ -74,8 +71,7 @@ void *thread(void *arg) {
     return NULL;
 }
 
-int compare(const void* message1, const void* message2)   // функция сравнения элементов массива
-{
+int compare(const void* message1, const void* message2) {  // функция сравнения элементов массива
     emailfilterMessage* mes1 = *(emailfilterMessage**)(message1);
     emailfilterMessage* mes2 = *(emailfilterMessage**)(message2);
     return compare_date(mes1->date, mes2->date);
@@ -99,17 +95,16 @@ emailfilterResult* emailfilter_filter(char* path, emailfilterParams* params, uin
         thread(&tw);
         result->size = tw.real_num_mes;
         result->emails = tw.list_mes;
-    }
-    else {
+    } else {
         int bytes_per_thread = (int)finfo.st_size / num_threads;
-        //выделяем память под массив идентификаторов потоков
+        // выделяем память под массив идентификаторов потоков
         pthread_t* threads = (pthread_t*) malloc(num_threads * sizeof(pthread_t));
-        //сколько потоков - столько и структур с данными
+        // сколько потоков - столько и структур с данными
         emailfilterThreadWorkload* thread_data =
                 (emailfilterThreadWorkload*) malloc(num_threads * sizeof(emailfilterThreadWorkload));
 
-        //инициализируем структуры потоков
-        for(int i = 0; i < num_threads; i++) {
+        // инициализируем структуры потоков
+        for (int i = 0; i < num_threads; i++) {
             thread_data[i].path = path;
             thread_data[i].start_index = i * bytes_per_thread;
             thread_data[i].end_index = (i + 1) * bytes_per_thread;
@@ -118,12 +113,12 @@ emailfilterResult* emailfilter_filter(char* path, emailfilterParams* params, uin
             thread_data[i].list_mes = NULL;
             thread_data[i].params = params;
 
-            //запускаем поток
+            // запускаем поток
             pthread_create(&(threads[i]), NULL, thread, &thread_data[i]);
         }
-        //ожидаем выполнение всех потоков и склеиваем результат
+        // ожидаем выполнение всех потоков и склеиваем результат
         size_t total_messages = 0;
-        for(int i = 0; i < num_threads; i++){
+        for (int i = 0; i < num_threads; i++) {
             pthread_join(threads[i], NULL);
             total_messages += thread_data[i].real_num_mes;
         }
@@ -132,9 +127,10 @@ emailfilterResult* emailfilter_filter(char* path, emailfilterParams* params, uin
         result->emails = (emailfilterMessage**)malloc(sizeof(emailfilterMessage*) * total_messages);
 
         size_t next_ind = 0;
-        for(int i = 0; i < num_threads; i++)
+        for (int i = 0; i < num_threads; i++)
             if (thread_data[i].list_mes != NULL) {
-            memmove(&(result->emails[next_ind]), thread_data[i].list_mes, sizeof(emailfilterMessage*) * thread_data[i].real_num_mes);
+            memmove(&(result->emails[next_ind]), thread_data[i].list_mes,
+                    sizeof(emailfilterMessage*) * thread_data[i].real_num_mes);
             next_ind += thread_data[i].real_num_mes;
         }
 

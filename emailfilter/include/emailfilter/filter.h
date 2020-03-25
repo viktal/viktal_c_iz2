@@ -4,13 +4,13 @@
 #include "emailfilter/email.h"
 #include "emailfilter/date.h"
 
-typedef struct emailfilterParams{
+typedef struct emailfilterParams {
     emailfilterDate* begin;
     emailfilterDate* end;
     char* recepient;
 }emailfilterParams;
 
-typedef struct emailfilterResult{
+typedef struct emailfilterResult {
     emailfilterMessage** emails;
     size_t size;
 }emailfilterResult;

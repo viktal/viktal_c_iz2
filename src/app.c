@@ -8,14 +8,12 @@
 
 
 int main(int argc, char** argv) {
-    if (argc != 6)
-    {
+    if (argc != 6) {
         printf("%s",
                 "Usage: app <email database>emails.txt <recipient>monro@gmail.com "
                 "<date begin>\"05 Jan 2019 13:18:49\" <date end>\"15 Jan 2020 00:00:00\" <num threads>12\n"
                 "Example: app emails.db elena@gmail.com \"05 Jan 2019 13:18:49\" \"15 Jan 2020 00:00:00\" 1\n"
-                "send threads -1 to use maximum number of threads available on the system\n"
-        );
+                "send threads -1 to use maximum number of threads available on the system\n");
         return EXIT_SUCCESS;
     }
     char* path = argv[1];

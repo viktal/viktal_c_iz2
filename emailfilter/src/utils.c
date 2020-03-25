@@ -1,23 +1,21 @@
 #include "emailfilter/utils.h"
 
-void skip_to_new_line(FILE* file, stream_buffer_state* stream_buffer)
-{
+void skip_to_new_line(FILE* file, stream_buffer_state* stream_buffer) {
     char prev;
-    if (ftell(file) == 0)
+    if (ftell(file) == 0) {
         prev = '\n';
-    else {
+    } else {
         fseek(file, (ftell(file) - 1), SEEK_SET);
         prev = getc(file);
     }
-    while (prev != '\n'){
+    while (prev != '\n') {
         fgets(stream_buffer->buffer, stream_buffer->buf_size, file);
         prev = stream_buffer->buffer[strlen(stream_buffer->buffer) - 1];
     }
     fgets(stream_buffer->buffer, stream_buffer->buf_size, file);
 }
 
-stream_buffer_state* create_stream_buffer()
-{
+stream_buffer_state* create_stream_buffer() {
     stream_buffer_state* stream_buffer = (stream_buffer_state*) malloc(sizeof(stream_buffer_state));
     // буфер определенного размера, чтобы не было переполнения, если строка будет слишком большой
     stream_buffer->buf_size = 1024;
@@ -25,8 +23,7 @@ stream_buffer_state* create_stream_buffer()
     return stream_buffer;
 }
 
-void read_to_newline(FILE* stream, stream_buffer_state* stream_buffer, char** result)
-{
+void read_to_newline(FILE* stream, stream_buffer_state* stream_buffer, char** result) {
     // buffer already contains newline
     char* newline = strchr(stream_buffer->buffer, '\n');
     if (newline != NULL) {
@@ -46,10 +43,13 @@ void read_to_newline(FILE* stream, stream_buffer_state* stream_buffer, char** re
 
     char lastchar = stream_buffer->buffer[stream_buffer->buf_size - 2];
     size_t real_buf_len = stream_buffer->buf_size;
-    while (lastchar != '\n')
-    {
+    while (lastchar != '\n') {
         strings = realloc(strings, (total_strings + 1) * sizeof(char*));
+        if (strings == NULL)
+            exit(EXIT_FAILURE);
         strlens = realloc(strlens, (total_strings + 1) * sizeof(int));
+        if (strlens == NULL)
+            exit(EXIT_FAILURE);
         total_strings += 1;
 
         fgets(stream_buffer->buffer, stream_buffer->buf_size, stream);
@@ -58,8 +58,7 @@ void read_to_newline(FILE* stream, stream_buffer_state* stream_buffer, char** re
         strlens[total_strings - 1] = real_buf_len;
         strings[total_strings - 1] = memcpy(
                 (char *)malloc(real_buf_len * sizeof(char)),
-                stream_buffer->buffer, real_buf_len
-        );
+                stream_buffer->buffer, real_buf_len);
     }
 
     // paste blocks into a single line
@@ -68,8 +67,7 @@ void read_to_newline(FILE* stream, stream_buffer_state* stream_buffer, char** re
         total_length += strlens[i] - 1;
     *result = (char*)malloc((total_length + 1) * sizeof(char));
     size_t curpos = 0;
-    for (int i = 0; i < total_strings; ++i)
-    {
+    for (int i = 0; i < total_strings; ++i) {
         memmove((*result) + curpos, strings[i], strlens[i] - 1);
         curpos += strlens[i] - 1;
         free(strings[i]);

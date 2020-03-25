@@ -19,11 +19,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.0.0
       - name: Install cpplint
-        run:  |
+        run: |
           sudo apt-get update
           sudo apt-get install -y python3-pip
           pip3 install cpplint
       - name: cpplint
-        run: python3 -m cpplint --linelength=120 --exclude=third_party --exclude=*build* \
-             --filter=-legal,-readability/casting  \
-             $( find . -name *.h -or -name *.c -or -name *.cpp) || true
+        run: |
+          python3 -m cpplint --linelength=120 --exclude=third_party --exclude=*build* \
+               --filter=-legal,-readability/casting  \
+               $( find src -name *.h -or -name *.c -or -name *.cpp) || true
+          python3 -m cpplint --linelength=120 --exclude=third_party --exclude=*build* \
+              --filter=-legal,-readability/casting  \
+              $( find emailfilter -name *.h -or -name *.c -or -name *.cpp) || true
