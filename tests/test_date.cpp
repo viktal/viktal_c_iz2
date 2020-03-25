@@ -50,4 +50,7 @@ TEST(date3, compare_date_test)
     date2->second = 1;
     ASSERT_EQ(compare_date(date1, date2), -1);
     ASSERT_EQ(compare_date(date2, date1), 1);
+
+    free(date1);
+    free(date2);
 }

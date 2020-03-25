@@ -10,7 +10,7 @@ Received: (qmail 29361 invoked from network); 4 Nov 1999 17:36:28 -0000
 Received: from zap.ne.mediaone.net (24.218.161.146)
   by taz.hyperreal.org with SMTP; 4 Nov 1999 17:36:28 -0000
 Received: (qmail 18164 invoked by uid 1000); 4 Nov 1999 17:36:24 -0000
-Date: 4 Nov 1999 17:36:23 -0000
+Date: Thu, 4 Nov 1999 17:36:23 -0000
 Message-ID: <19991104173623.18163.qmail@zap.ne.mediaone.net>
 To: announce@apache.org
 From: bhyde@apache.org

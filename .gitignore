@@ -37,13 +37,6 @@
 cmake-build-debug
 cmake-build-release
 build
-test.sh
-func.c
-895133669.txt
-abc.txt
-cmake-build-debug/tmp.txt
-201112.txt
-tmp.h
 
 # IDEA
 .idea
