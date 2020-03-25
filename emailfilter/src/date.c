@@ -78,7 +78,7 @@ emailfilterMonth set_month(char* m)
     if (strcmp(m, "dec") == 0) month = 12;
 
     if (!month) {
-        printf("is not month \n");
+        printf("%s is not month \n", m);
         exit(EXIT_FAILURE);
     }
     else return month;
@@ -90,8 +90,7 @@ emailfilterDate* read_date(char* read_from)
     int d, y;
     int h, min, s;
     char* m = (char*) malloc(4);
-    sscanf(read_from, "%i %s %i %d:%d:%d", &d, m, &y, &h, &min, &s); //DD.MM.YYYY
-
+    sscanf(read_from, "%d %3s %d %d:%d:%d", &d, m, &y, &h, &min, &s); //DD.MM.YYYY
 
     emailfilterMonth mon = set_month(m);
 
@@ -105,7 +104,7 @@ emailfilterDate* read_date(char* read_from)
         return date;
     }
     else {
-        printf("is not date \n");
+        printf("%s is not date \n", read_from);
         exit(EXIT_FAILURE);
     }
 }

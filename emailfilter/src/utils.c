@@ -1,6 +1,5 @@
 #include "emailfilter/utils.h"
 
-
 void skip_to_new_line(FILE* file, stream_buffer_state* stream_buffer)
 {
     char prev;
@@ -20,8 +19,8 @@ void skip_to_new_line(FILE* file, stream_buffer_state* stream_buffer)
 stream_buffer_state* create_stream_buffer()
 {
     stream_buffer_state* stream_buffer = (stream_buffer_state*) malloc(sizeof(stream_buffer_state));
-    stream_buffer->buf_size = 15;  // буфер определенного размера, чтобы не было переполнения,
-    // если строка будет слишком большой
+    // буфер определенного размера, чтобы не было переполнения, если строка будет слишком большой
+    stream_buffer->buf_size = 1024;
     stream_buffer->buffer = (char*)malloc(stream_buffer->buf_size  * sizeof(char));
     return stream_buffer;
 }

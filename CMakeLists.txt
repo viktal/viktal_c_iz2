@@ -17,5 +17,5 @@ option(BUILD_TESTS "Build test programs" ON)
 
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTS)
     include(CTest)
-#    add_subdirectory(tests)
+    add_subdirectory(tests)
 endif()
