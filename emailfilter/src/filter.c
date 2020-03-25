@@ -66,14 +66,10 @@ void *thread(void *arg) {
                 tw->real_num_mes ++;
             long a = ftell(file);
             long b = tw->end_index;
-            printf("%li %li \n", a, b);
         }
 
         if (ftell(file) >= tw->end_index)
-        {
-            printf("end of file\n");
             return NULL;
-        }
     }
     return NULL;
 }
@@ -124,14 +120,12 @@ emailfilterResult* emailfilter_filter(char* path, emailfilterParams* params, uin
 
             //запускаем поток
             pthread_create(&(threads[i]), NULL, thread, &thread_data[i]);
-            printf("1 %i\n", thread_data[0].real_num_mes);
         }
         //ожидаем выполнение всех потоков и склеиваем результат
         size_t total_messages = 0;
         for(int i = 0; i < num_threads; i++){
             pthread_join(threads[i], NULL);
             total_messages += thread_data[i].real_num_mes;
-            printf("%i\n", thread_data[i].real_num_mes);
         }
 
         result->size = total_messages;

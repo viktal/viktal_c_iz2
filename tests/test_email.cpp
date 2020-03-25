@@ -92,6 +92,5 @@ TEST(email3, parse_recep_test)
 //    ASSERT_STREQ(recepients->emails[1], "@apache.org");
 
     free(recepients);
-
 }
 

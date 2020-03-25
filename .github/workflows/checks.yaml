@@ -1,0 +1,29 @@
+name: Code checks
+on: [pull_request]
+
+jobs:
+  cppcheck:
+    name: Run cppcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.0.0
+      - name: Install cppcheck
+        run:  sudo apt-get update && sudo apt-get install -y cppcheck
+      - name: cppcheck
+        run: cppcheck --quiet --enable=all --language=c --std=c11 -i third_party .
+  cpplint:
+    name: Run cpplint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.0.0
+      - name: Install cpplint
+        run:  |
+          sudo apt-get update
+          sudo apt-get install -y python3-pip
+          pip3 install cpplint
+      - name: cpplint
+        run: python3 -m cpplint --linelength=120 --exclude=third_party --exclude=*build* \
+             --filter=-legal,-readability/casting  \
+             $( find . -name *.h -or -name *.c -or -name *.cpp) || true

@@ -7,10 +7,8 @@ void parse_message(stream_buffer_state* stream_buffer, emailfilterMessage* mes, 
         read_to_newline(file, stream_buffer, &line);
         // "Date: Tue, 09 Jan 2018 13:57:33 +0100\n"
         // offset = 11 чтобы пропустить Date и день недели
-        printf("%s\n", line);
         int offset = 11;
         line[offset + 20] = '\0'; // упускаем постфикс
-        printf("%s\n", line);
         mes->date = read_date(line + offset);
     }
     else if (strncmp(stream_buffer->buffer,"Subject:", 8) == 0) {

@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
         printf("%s",
                 "Usage: app <email database>emails.txt <recipient>monro@gmail.com "
                 "<date begin>\"05 Jan 2019 13:18:49\" <date end>\"15 Jan 2020 00:00:00\" <num threads>12\n"
-                "Example: app emails.db elena@gmail.com \"05 Jan 2019 13:18:49\" \"15 Jan 2020 00:00:00\" 1"
+                "Example: app emails.db elena@gmail.com \"05 Jan 2019 13:18:49\" \"15 Jan 2020 00:00:00\" 1\n"
                 "send threads -1 to use maximum number of threads available on the system"
         );
         return EXIT_SUCCESS;
