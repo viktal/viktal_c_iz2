@@ -19,9 +19,9 @@ typedef struct emailfilterDate {
     int second;
 }emailfilterDate;
 
-emailfilterDate* read_date(char* read_from);
-bool is_date(int d, emailfilterMonth mon, int y, int h, int min, int s);
-bool is_leapyear(int y);
-int compare_date(emailfilterDate* date1, emailfilterDate* date2);  // true, если первая дата меньше или равна второй
-emailfilterMonth set_month(char* m);
-void print_date(emailfilterDate* date);
+emailfilterDate* emailfilter_parse_date(char* date);
+bool emailfilter_is_date(int d, emailfilterMonth mon, int y, int h, int min, int s);
+bool emailfilter_is_leapyear(int y);
+int emailfilter_compare_date(emailfilterDate* date1, emailfilterDate* date2);  // true, если первая дата меньше или равна второй
+emailfilterMonth emailfilter_parse_month(char* month);
+void emailfilter_print_date(FILE* file, emailfilterDate* date);

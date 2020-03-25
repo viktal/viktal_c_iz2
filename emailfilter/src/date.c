@@ -1,13 +1,13 @@
 #include "emailfilter/date.h"
 
-bool is_date(int d, emailfilterMonth mon, int y, int h, int min, int s) {
+bool emailfilter_is_date(int d, emailfilterMonth mon, int y, int h, int min, int s) {
     if (d <= 0) return false;
     if (mon < jan || dec < mon) return false;
 
     int days_in_month = 31;  // большинство месяцев состоит из 31 дня
     switch (mon) {
         case feb:  // продолжительность февраля варьируется
-            days_in_month = (is_leapyear(y))?29:28;
+            days_in_month = (emailfilter_is_leapyear(y)) ? 29 : 28;
             break;
         case apr:
         case jun:
@@ -27,7 +27,7 @@ bool is_date(int d, emailfilterMonth mon, int y, int h, int min, int s) {
     return true;
 }
 
-bool is_leapyear(int y) {
+bool emailfilter_is_leapyear(int y) {
     return (y%4 == 0 && y%100 != 0) || y%400 == 0;
 }
 
@@ -36,7 +36,7 @@ bool is_leapyear(int y) {
  * отрицательное целое значение, если первый аргумент меньше чем второй,
  * положительное целое значение, если первый аргумент больше чем второй
  * и ноль если они равны. */
-int compare_date(emailfilterDate* date1, emailfilterDate* date2) {
+int emailfilter_compare_date(emailfilterDate* date1, emailfilterDate* date2) {
     int a = date1->year - date2->year;
     int b = date1->month - date2->month;
     int c = date1->day - date2->day;
@@ -49,56 +49,60 @@ int compare_date(emailfilterDate* date1, emailfilterDate* date2) {
         return c;
 }
 
-void print_date(emailfilterDate* date) {
-    printf("%i.%i.%i %i:%i:%i \n", date->day, date->month, date->year, date->hour, date->minute, date->second);
+void emailfilter_print_date(FILE* file, emailfilterDate* date) {
+    fprintf(file, "%i.%i.%i %i:%i:%i \n",
+            date->day, date->month, date->year, date->hour, date->minute, date->second);
 }
 
-emailfilterMonth set_month(char* m) {
+emailfilterMonth emailfilter_parse_month(char* month) {
     for (int i = 0; i < 3; i++) {
-        m[i] = tolower(m[i]);
+        month[i] = tolower(month[i]);
     }
-    emailfilterMonth month = 0;
+    emailfilterMonth parsed_month = 0;
 
-    if (strcmp(m, "jan") == 0) month = 1;
-    if (strcmp(m, "feb") == 0) month = 2;
-    if (strcmp(m, "mar") == 0) month = 3;
-    if (strcmp(m, "apr") == 0) month = 4;
-    if (strcmp(m, "may") == 0) month = 5;
-    if (strcmp(m, "jun") == 0) month = 6;
-    if (strcmp(m, "jul") == 0) month = 7;
-    if (strcmp(m, "aug") == 0) month = 8;
-    if (strcmp(m, "sep") == 0) month = 9;
-    if (strcmp(m, "oct") == 0) month = 10;
-    if (strcmp(m, "nov") == 0) month = 11;
-    if (strcmp(m, "dec") == 0) month = 12;
+    if (strcmp(month, "jan") == 0) parsed_month = 1;
+    if (strcmp(month, "feb") == 0) parsed_month = 2;
+    if (strcmp(month, "mar") == 0) parsed_month = 3;
+    if (strcmp(month, "apr") == 0) parsed_month = 4;
+    if (strcmp(month, "may") == 0) parsed_month = 5;
+    if (strcmp(month, "jun") == 0) parsed_month = 6;
+    if (strcmp(month, "jul") == 0) parsed_month = 7;
+    if (strcmp(month, "aug") == 0) parsed_month = 8;
+    if (strcmp(month, "sep") == 0) parsed_month = 9;
+    if (strcmp(month, "oct") == 0) parsed_month = 10;
+    if (strcmp(month, "nov") == 0) parsed_month = 11;
+    if (strcmp(month, "dec") == 0) parsed_month = 12;
 
-    if (!month) {
-        printf("%s is not month \n", m);
+    if (!parsed_month) {
+        printf("%s is not month \n", month);
         exit(EXIT_FAILURE);
     } else {
-        return month;
+        return parsed_month;
     }
 }
 
-emailfilterDate* read_date(char* read_from) {
-    emailfilterDate *date = (emailfilterDate *) malloc(sizeof(emailfilterDate));
+emailfilterDate* emailfilter_parse_date(char* date) {
+    emailfilterDate *parsed_date = (emailfilterDate *) malloc(sizeof(emailfilterDate));
     int d, y;
     int h, min, s;
     char* m = (char*) malloc(4);
-    sscanf(read_from, "%d %3s %d %d:%d:%d", &d, m, &y, &h, &min, &s);  // DD.MM.YYYY
+    if (m == NULL)
+        exit(EXIT_FAILURE);
+    sscanf(date, "%d %3s %d %d:%d:%d", &d, m, &y, &h, &min, &s);  // DD.MM.YYYY
 
-    emailfilterMonth mon = set_month(m);
+    emailfilterMonth mon = emailfilter_parse_month(m);
+    free(m);
 
-    if (is_date(d, mon, y, h, min, s)) {
-        date->day = d;
-        date->month = mon;
-        date->year = y;
-        date->hour = h;
-        date->minute = min;
-        date->second = s;
-        return date;
+    if (emailfilter_is_date(d, mon, y, h, min, s)) {
+        parsed_date->day = d;
+        parsed_date->month = mon;
+        parsed_date->year = y;
+        parsed_date->hour = h;
+        parsed_date->minute = min;
+        parsed_date->second = s;
+        return parsed_date;
     } else {
-        printf("%s is not date \n", read_from);
+        printf("%s is not date \n", date);
         exit(EXIT_FAILURE);
     }
 }

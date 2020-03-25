@@ -7,27 +7,27 @@ extern "C" {
 TEST(date1, is_month_test)
 {
     char m1[] = "Jan";
-    ASSERT_EQ(set_month(m1), 1);
-    ASSERT_NE(set_month(m1), 2);
+    ASSERT_EQ(emailfilter_parse_month(m1), 1);
+    ASSERT_NE(emailfilter_parse_month(m1), 2);
 
     char m2[] = "Dec";
-    ASSERT_EQ(set_month(m2), 12);
+    ASSERT_EQ(emailfilter_parse_month(m2), 12);
 
     char m3[] = "fdf";
-    ASSERT_DEATH(set_month(m3), "");
+    ASSERT_DEATH(emailfilter_parse_month(m3), "");
 
 }
 
 TEST(date2, is_date_test)
 {
-    ASSERT_TRUE(is_date(1, (emailfilterMonth)1, 2020, 1, 1, 1));
-    ASSERT_FALSE(is_date(33, (emailfilterMonth)1, 2020, 1, 1, 1));
-    ASSERT_FALSE(is_date(1, (emailfilterMonth)13, 2020, 1, 1, 1));
-    ASSERT_FALSE(is_date(1, (emailfilterMonth)1, 2020, 25, 1, 1));
-    ASSERT_FALSE(is_date(1, (emailfilterMonth)1, 2020, 1, 70, 1));
-    ASSERT_FALSE(is_date(1, (emailfilterMonth)1, 2020, 1, 1, 70));
-    ASSERT_TRUE(is_date(29, (emailfilterMonth)2, 2020, 1, 1, 1));
-    ASSERT_FALSE(is_date(29, (emailfilterMonth)2, 2019, 1, 1, 1));
+    ASSERT_TRUE(emailfilter_is_date(1, (emailfilterMonth) 1, 2020, 1, 1, 1));
+    ASSERT_FALSE(emailfilter_is_date(33, (emailfilterMonth) 1, 2020, 1, 1, 1));
+    ASSERT_FALSE(emailfilter_is_date(1, (emailfilterMonth) 13, 2020, 1, 1, 1));
+    ASSERT_FALSE(emailfilter_is_date(1, (emailfilterMonth) 1, 2020, 25, 1, 1));
+    ASSERT_FALSE(emailfilter_is_date(1, (emailfilterMonth) 1, 2020, 1, 70, 1));
+    ASSERT_FALSE(emailfilter_is_date(1, (emailfilterMonth) 1, 2020, 1, 1, 70));
+    ASSERT_TRUE(emailfilter_is_date(29, (emailfilterMonth) 2, 2020, 1, 1, 1));
+    ASSERT_FALSE(emailfilter_is_date(29, (emailfilterMonth) 2, 2019, 1, 1, 1));
 }
 
 TEST(date3, compare_date_test)
@@ -39,7 +39,7 @@ TEST(date3, compare_date_test)
     date1->hour = 1;
     date1->minute = 1;
     date1->second = 1;
-    ASSERT_EQ(compare_date(date1, date1), 0);
+    ASSERT_EQ(emailfilter_compare_date(date1, date1), 0);
 
     emailfilterDate *date2 = (emailfilterDate *) malloc(sizeof(emailfilterDate));
     date2->day = 2;
@@ -48,8 +48,8 @@ TEST(date3, compare_date_test)
     date2->hour = 1;
     date2->minute = 1;
     date2->second = 1;
-    ASSERT_EQ(compare_date(date1, date2), -1);
-    ASSERT_EQ(compare_date(date2, date1), 1);
+    ASSERT_EQ(emailfilter_compare_date(date1, date2), -1);
+    ASSERT_EQ(emailfilter_compare_date(date2, date1), 1);
 
     free(date1);
     free(date2);

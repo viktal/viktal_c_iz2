@@ -7,22 +7,22 @@ extern "C" {
 TEST(utils1, read_to_newline_test)
 {
     FILE *file = fopen("199911.txt", "r");
-    stream_buffer_state* buffer = create_stream_buffer();
+    emailfilterBuffer* buffer = emailfilter_create_buffer(15);
     char* line = NULL;
     char* retcode;
 
     retcode = fgets(buffer->buffer, buffer->buf_size, file);
     if (retcode == NULL)
         exit(1);
-    read_to_newline(file, buffer, &line);
-    ASSERT_STREQ(line, "Subject: Changes in Apache mailing lists.");
+    emailfilter_read_to_newline(file, buffer, &line);
+    ASSERT_STREQ(line, "Subject: Changes in Apache mailing lists.\n");
     free(line);
 
     retcode = fgets(buffer->buffer, buffer->buf_size, file);
     if (retcode == NULL)
         exit(1);
-    read_to_newline(file, buffer, &line);
-    ASSERT_STREQ(line, "To: announce@apache.org");
+    emailfilter_read_to_newline(file, buffer, &line);
+    ASSERT_STREQ(line, "To: announce@apache.org\n");
     free(line);
 
     fclose(file);
@@ -33,10 +33,10 @@ TEST(utils1, read_to_newline_test)
 TEST(utils2, skip_to_newline_test)
 {
     FILE *file = fopen("199911.txt", "r");
-    stream_buffer_state* buffer = create_stream_buffer();
+    emailfilterBuffer* buffer = emailfilter_create_buffer(100);
     char* retcode;
 
-    skip_to_new_line(file, buffer);
+    emailfilter_skip_to_new_line(file, buffer);
     ASSERT_STREQ(buffer->buffer, "Subject: Changes in Apache mailing lists.\n");
 
     retcode = fgets(buffer->buffer, buffer->buf_size, file);
@@ -48,7 +48,7 @@ TEST(utils2, skip_to_newline_test)
     retcode = fgets(buffer->buffer, buffer->buf_size, file);
     if (retcode == NULL)
         exit(1);
-    skip_to_new_line(file, buffer);
+    emailfilter_skip_to_new_line(file, buffer);
     ASSERT_STREQ(buffer->buffer, "From");
 
     fclose(file);

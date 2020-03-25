@@ -17,7 +17,7 @@ typedef struct emailfilterMessage {
     emailfilterRecepients recepients;
 }emailfilterMessage;
 
-void print_mes(emailfilterMessage** messages, int size);
-bool message_end(emailfilterMessage* mes);
-void parse_recepients(char* line, emailfilterRecepients* recepients);
-void parse_message(stream_buffer_state* stream_buffer, emailfilterMessage* mes, FILE* file);
+void emailfilter_print_mes(FILE* file, emailfilterMessage** messages, int size);
+bool emailfilter_is_message_end(emailfilterMessage* mes);
+void emailfilter_parse_recepients(char* line, emailfilterRecepients* recepients);
+void emailfilter_parse_message(emailfilterBuffer* stream_buffer, emailfilterMessage* mes, FILE* file);

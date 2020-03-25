@@ -20,9 +20,9 @@ typedef struct emailfilterThreadWorkload {
 } emailfilterThreadWorkload;
 
 bool to_keep(emailfilterMessage* mes, emailfilterParams* params) {
-    if (compare_date(mes->date, params->begin) < 0) {
+    if (emailfilter_compare_date(mes->date, params->begin) < 0) {
         return false;
-    } else if (compare_date(mes->date, params->end) > 0) {
+    } else if (emailfilter_compare_date(mes->date, params->end) > 0) {
         return false;
     } else {
         for (int i = 0; i < mes->recepients.size; i++) {
@@ -38,10 +38,10 @@ void *thread(void *arg) {
 
     FILE *file = fopen(tw->path, "r");
     fseek(file, tw->start_index, SEEK_SET);
-    stream_buffer_state *stream_buffer = create_stream_buffer();
+    emailfilterBuffer *stream_buffer = emailfilter_create_default_buffer();
 
     while (!feof(file)) {
-        skip_to_new_line(file, stream_buffer);
+        emailfilter_skip_to_new_line(file, stream_buffer);
         if (strncmp(stream_buffer->buffer, "From ", 5) == 0) {
             if (tw->real_num_mes >= tw->reserved_num_mes) {
                 tw->reserved_num_mes = tw->reserved_num_mes == 0 ? 1 : 2 * (tw->reserved_num_mes);
@@ -53,13 +53,15 @@ void *thread(void *arg) {
                 }
             }
             tw->list_mes[tw->real_num_mes]= (emailfilterMessage *) malloc(sizeof(emailfilterMessage));
+            if (tw->list_mes[tw->real_num_mes] == NULL)
+                exit(EXIT_FAILURE);
             tw->list_mes[tw->real_num_mes]->recepients.emails = NULL;
             tw->list_mes[tw->real_num_mes]->subject = NULL;
             tw->list_mes[tw->real_num_mes]->date = NULL;
 
-            while (!message_end(tw->list_mes[tw->real_num_mes])) {  // считать три элемента (subject, date, to)
-                skip_to_new_line(file, stream_buffer);
-                parse_message(stream_buffer, tw->list_mes[tw->real_num_mes], file);
+            while (!emailfilter_is_message_end(tw->list_mes[tw->real_num_mes])) {  // считать три элемента (subject, date, to)
+                emailfilter_skip_to_new_line(file, stream_buffer);
+                emailfilter_parse_message(stream_buffer, tw->list_mes[tw->real_num_mes], file);
             }
             if (to_keep(tw->list_mes[tw->real_num_mes], tw->params))
                 tw->real_num_mes++;
@@ -74,13 +76,15 @@ void *thread(void *arg) {
 int compare(const void* message1, const void* message2) {  // функция сравнения элементов массива
     emailfilterMessage* mes1 = *(emailfilterMessage**)(message1);
     emailfilterMessage* mes2 = *(emailfilterMessage**)(message2);
-    return compare_date(mes1->date, mes2->date);
+    return emailfilter_compare_date(mes1->date, mes2->date);
 }
 
 emailfilterResult* emailfilter_filter(char* path, emailfilterParams* params, uint16_t num_threads) {
     struct stat finfo;
     stat(path, &finfo);
     emailfilterResult* result = (emailfilterResult*) malloc(sizeof(emailfilterResult));
+    if (result == NULL)
+        exit(EXIT_FAILURE);
 
     // sequential
     if (num_threads <= 1) {
@@ -99,9 +103,13 @@ emailfilterResult* emailfilter_filter(char* path, emailfilterParams* params, uin
         int bytes_per_thread = (int)finfo.st_size / num_threads;
         // выделяем память под массив идентификаторов потоков
         pthread_t* threads = (pthread_t*) malloc(num_threads * sizeof(pthread_t));
+        if (threads == NULL)
+            exit(EXIT_FAILURE);
         // сколько потоков - столько и структур с данными
         emailfilterThreadWorkload* thread_data =
                 (emailfilterThreadWorkload*) malloc(num_threads * sizeof(emailfilterThreadWorkload));
+        if (thread_data == NULL)
+            exit(EXIT_FAILURE);
 
         // инициализируем структуры потоков
         for (int i = 0; i < num_threads; i++) {
@@ -125,6 +133,8 @@ emailfilterResult* emailfilter_filter(char* path, emailfilterParams* params, uin
 
         result->size = total_messages;
         result->emails = (emailfilterMessage**)malloc(sizeof(emailfilterMessage*) * total_messages);
+        if (result->emails == NULL)
+            exit(EXIT_FAILURE);
 
         size_t next_ind = 0;
         for (int i = 0; i < num_threads; i++)
