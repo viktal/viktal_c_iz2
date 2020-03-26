@@ -1,0 +1,20 @@
+Subject: Changes in Apache mailing lists.
+To: announce@apache.org
+Date: Thu, 4 Nov 1999 17:36:23 -0000
+From bhyde@zap.ne.mediaone.net  Thu Nov  4 17:36:28 1999
+Return-Path: <bhyde@zap.ne.mediaone.net>
+Mailing-List: contact announce-help@apache.org; run by ezmlm
+Delivered-To: mailing list announce@apache.org
+Delivered-To: moderator for announce@apache.org
+Received: (qmail 29361 invoked from network); 4 Nov 1999 17:36:28 -0000
+Received: from zap.ne.mediaone.net (24.218.161.146)
+  by taz.hyperreal.org with SMTP; 4 Nov 1999 17:36:28 -0000
+Received: (qmail 18164 invoked by uid 1000); 4 Nov 1999 17:36:24 -0000
+Date: Thu, 4 Nov 1999 17:36:23 -0000
+Message-ID: <19991104173623.18163.qmail@zap.ne.mediaone.net>
+To: announce@apache.org
+From: bhyde@apache.org
+
+You are receiving this note because you are subscribed to the
+apache-announce mailing list at apache.org.
+

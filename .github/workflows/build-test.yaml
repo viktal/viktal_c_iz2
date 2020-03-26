@@ -1,0 +1,45 @@
+name: Linux builds
+on: [pull_request]
+
+jobs:
+  build_ubuntu:
+    name: Build-test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+            os: [ubuntu-18.04]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.0.0
+      - name: Checkout submodules and git-lfs
+        shell: bash
+        run: |
+          git submodule update --init --recursive
+          git-lfs pull
+      - name: Install CMake
+        run:  sudo apt-get update && sudo apt-get install -y cmake valgrind lcov
+      - name: Build binary
+        run:  mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
+      - name: Run tests
+        run: |
+          cd build/tests
+          valgrind --leak-check=full --leak-resolution=med ./test_date
+          valgrind --leak-check=full --leak-resolution=med ./test_email
+          valgrind --leak-check=full --leak-resolution=med ./test_utils
+          valgrind --leak-check=full --leak-resolution=med ./test_filter_shared
+          valgrind --leak-check=full --leak-resolution=med ./test_filter_static
+      - name: Test coverage report
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: |
+          cd build/tests
+          lcov --capture --directory . --output-file coverage.info
+          lcov --remove coverage.info '/usr/*' --output-file coverage.info
+          lcov --remove coverage.info '*googletest*' --output-file coverage.info
+          lcov --list coverage.info
+          bash <(curl -s https://codecov.io/bash)
+      - name: Stress test
+        run: |
+          tar -xf tests/openoffice.mbox.tar.gz -C build/tests
+          cd build/tests
+          ./stress-test.sh ../src/app_static ../src/app_shared openoffice.mbox
