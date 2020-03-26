@@ -15,8 +15,6 @@ Message-ID: <19991104173623.18163.qmail@zap.ne.mediaone.net>
 To: announce@apache.org
 From: bhyde@apache.org
 
-
-
 You are receiving this note because you are subscribed to the
 apache-announce mailing list at apache.org.
 

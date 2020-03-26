@@ -26,6 +26,8 @@ jobs:
           valgrind --leak-check=full --leak-resolution=med ./test_date
           valgrind --leak-check=full --leak-resolution=med ./test_email
           valgrind --leak-check=full --leak-resolution=med ./test_utils
+          valgrind --leak-check=full --leak-resolution=med ./test_filter_shared
+          valgrind --leak-check=full --leak-resolution=med ./test_filter_static
       - name: Test coverage report
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
@@ -40,4 +42,4 @@ jobs:
         run: |
           tar -xf tests/openoffice.mbox.tar.gz -C build/tests
           cd build/tests
-          ./stress-test.sh ../src/app openoffice.mbox
+          ./stress-test.sh ../src/app_static ../src/app_shared openoffice.mbox

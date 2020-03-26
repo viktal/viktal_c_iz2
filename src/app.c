@@ -27,8 +27,16 @@ int main(int argc, char** argv) {
     emailfilterResult* result = emailfilter_filter(path, &params, threads);
     emailfilter_print_mes(stdout, result->emails, result->size);
 
-    for (size_t i = 0; i < result->size; i++)
-        free(result->emails[i]);
+    for (size_t k = 0; k < result->size; k++) {
+        free(result->emails[k]->date);
+        free(result->emails[k]->subject);
+        for (int l = 0; l < result->emails[k]->recepients.size; l++) {
+            free(result->emails[k]->recepients.emails[l]);
+        }
+        free(result->emails[k]->recepients.emails);
+        free(result->emails[k]);
+    }
+
     free(result->emails);
     free(result);
 

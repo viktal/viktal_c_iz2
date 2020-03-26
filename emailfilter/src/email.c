@@ -37,7 +37,7 @@ void emailfilter_print_mes(FILE* file, emailfilterMessage** messages, int size) 
         printf("\n");
         emailfilter_print_date(file, messages[i]->date);
     }
-    fprintf(file,"\n%i messages in total\n", size);
+    fprintf(file, "\n%i messages in total\n", size);
 }
 
 bool emailfilter_is_message_end(emailfilterMessage* mes) {

@@ -1,0 +1,1151 @@
+From gora-dev-return-373-apmail-incubator-gora-dev-archive=incubator.apache.org@incubator.apache.org  Wed May  4 18:56:56 2011
+Return-Path: <gora-dev-return-373-apmail-incubator-gora-dev-archive=incubator.apache.org@incubator.apache.org>
+X-Original-To: apmail-incubator-gora-dev-archive@minotaur.apache.org
+Delivered-To: apmail-incubator-gora-dev-archive@minotaur.apache.org
+Received: from mail.apache.org (hermes.apache.org [140.211.11.3])
+	by minotaur.apache.org (Postfix) with SMTP id 86B4138DC
+	for <apmail-incubator-gora-dev-archive@minotaur.apache.org>; Wed,  4 May 2011 18:56:56 +0000 (UTC)
+Received: (qmail 15312 invoked by uid 500); 4 May 2011 18:56:56 -0000
+Delivered-To: apmail-incubator-gora-dev-archive@incubator.apache.org
+Received: (qmail 15273 invoked by uid 500); 4 May 2011 18:56:56 -0000
+Mailing-List: contact gora-dev-help@incubator.apache.org; run by ezmlm
+Precedence: bulk
+List-Help: <mailto:gora-dev-help@incubator.apache.org>
+List-Unsubscribe: <mailto:gora-dev-unsubscribe@incubator.apache.org>
+List-Post: <mailto:gora-dev@incubator.apache.org>
+List-Id: <gora-dev.incubator.apache.org>
+Reply-To: gora-dev@incubator.apache.org
+Delivered-To: mailing list gora-dev@incubator.apache.org
+Received: (qmail 15265 invoked by uid 99); 4 May 2011 18:56:56 -0000
+Received: from athena.apache.org (HELO athena.apache.org) (140.211.11.136)
+    by apache.org (qpsmtpd/0.29) with ESMTP; Wed, 04 May 2011 18:56:56 +0000
+X-ASF-Spam-Status: No, hits=1.5 required=5.0
+	tests=FREEMAIL_FROM,HTML_MESSAGE,RCVD_IN_DNSWL_LOW,RFC_ABUSE_POST,SPF_PASS,T_TO_NO_BRKTS_FREEMAIL
+X-Spam-Check-By: apache.org
+Received-SPF: pass (athena.apache.org: domain of lists.digitalpebble@gmail.com designates 209.85.216.47 as permitted sender)
+Received: from [209.85.216.47] (HELO mail-qw0-f47.google.com) (209.85.216.47)
+    by apache.org (qpsmtpd/0.29) with ESMTP; Wed, 04 May 2011 18:56:51 +0000
+Received: by qwh5 with SMTP id 5so1049352qwh.6
+        for <gora-dev@incubator.apache.org>; Wed, 04 May 2011 11:56:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:content-type;
+        bh=W/h/3bcV7dmQr+eNfA9qIUkGohEiA8lXPgkHUtT/Pwg=;
+        b=s1pwZF8mBSK4wY4n6f20wNl0GhzfI9z66i3vWbtGI6iHulJQQJPX5Wtw/huwIXZ+Be
+         mBGna+zmP447vvr6wKEsJqTwVkPAO878wDa6L5FccmqisH6sIr6ImslgkyU1uKiYrTEO
+         /3vAzylXtCTNsCpF0sKyie22vncf4/d92WWa8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :content-type;
+        b=nAZlHba8IFMo53NwhY+JkxoFZqWsrYP7ksMeQPDO7fxSaZ5/x82mIGC60U5RH/yns6
+         0bx1JTTs9lk8uK+w3DqD+/NSLCBJoAhUL/wGZ4k6JOzl8h6DxvmsgXNpQzjMmmHyOZwW
+         kVisLTTTAUP7a/lYm7e6/n/SEXI8DIthWDHfI=
+MIME-Version: 1.0
+Received: by 10.229.107.21 with SMTP id z21mr1147526qco.187.1304535390963;
+ Wed, 04 May 2011 11:56:30 -0700 (PDT)
+Received: by 10.229.229.18 with HTTP; Wed, 4 May 2011 11:56:30 -0700 (PDT)
+In-Reply-To: <BANLkTikNpza_esn=OUcu_WjvjNYx8BgpBQ@mail.gmail.com>
+References: <BANLkTimOauKQ7bbmqnLt1i8MZdEjFotPWg@mail.gmail.com>
+	<BANLkTinYQbpj2OSnq=n6Ks=nNr6Lib_W4g@mail.gmail.com>
+	<FF4B8B72-CD18-4531-944D-E7C932660781@jpl.nasa.gov>
+	<BANLkTikNpza_esn=OUcu_WjvjNYx8BgpBQ@mail.gmail.com>
+Date: Wed, 4 May 2011 19:56:30 +0100
+Message-ID: <BANLkTi=KW66Xnnq7oOjku6YB4pGFCeHkqg@mail.gmail.com>
+Subject: Re: [ANNOUNCEMENT] Apache Gora 0.1-incubating Released
+From: gora-dev@incubator.apache.org
+To: gora-dev@incubator.apache.org
+Content-Type: multipart/alternative; boundary=002354471334934a2a04a277d0d7
+
+--002354471334934a2a04a277d0d7
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+Any news on the publication of the artefacts? I've lost track of where we
+are
+
+Thanks
+
+Julien
+
+On 13 April 2011 06:51, Henry Saputra <henry.saputra@gmail.com> wrote:
+
+> INFRA case created for space in repository.apache.org for Gora:
+> https://issues.apache.org/jira/browse/INFRA-3580
+>
+> On Wed, Apr 6, 2011 at 9:43 AM, Mattmann, Chris A (388J)
+> <chris.a.mattmann@jpl.nasa.gov> wrote:
+> > Hey Guys,
+> >
+> > 1. we should create a JIRA issue for INFRA asking for space for
+> org.apache.gora on repository.apache.org
+> > 2. take a look at NUTCH-825 [1] for an example of the config needed to
+> add to the ant build to publish to repository.apache.org
+> > 3. once published, we release on the repository.apache.org Nexus server
+> and it's sync'ed to Central in 24-48 hours.
+> >
+> > Cheers,
+> > Chris
+> >
+> > [1] http://issues.apache.org/jira/browse/NUTCH-825
+> >
+> > On Apr 6, 2011, at 4:49 AM, Julien Nioche wrote:
+> >
+> >> Hi,
+> >>
+> >> Anything special that needs doing to publish the artifacts so we can
+> declare
+> >> a dependency to Gora with Maven / Ivy?
+> >>
+> >> Julien
+> >>
+> >>
+> >> On 6 April 2011 04:10, Henry Saputra <henry.saputra@gmail.com> wrote:
+> >>
+> >>> Hi All,
+> >>>
+> >>> The Gora community has released Apache Gora 0.1-incubating under the
+> >>> Apache Incubator.
+> >>>
+> >>> Apache Gora is an ORM framework for column stores such as Apache HBase
+> >>> and Apache Cassandra with a specific focus on Hadoop.
+> >>>
+> >>> The source release for 0.1-incubating is available at:
+> >>>
+> >>> http://www.apache.org/dist/incubator/gora/0.1-incubating/
+> >>>
+> >>> In the initial hours, the release may not be available on all mirrors.
+> >>> When downloading from a mirror site, please remember to verify the
+> >>> downloads using signatures found on the Apache site:
+> >>>
+> >>>
+> >>>
+> http://www.apache.org/dist/incubator/gora//0.1-incubating/KEYS-0.1-incubating
+> >>>
+> >>> For more information on Apache Gora, visit the project home page:
+> >>>
+> >>> http://incubator.apache.org/gora/
+> >>>
+> >>> --
+> >>> Thanks,
+> >>> Henry
+> >>>
+> >>
+> >>
+> >>
+> >> --
+> >> *
+> >> *Open Source Solutions for Text Engineering
+> >>
+> >> http://digitalpebble.blogspot.com/
+> >> http://www.digitalpebble.com
+> >
+> >
+> > ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+> > Chris Mattmann, Ph.D.
+> > Senior Computer Scientist
+> > NASA Jet Propulsion Laboratory Pasadena, CA 91109 USA
+> > Office: 171-266B, Mailstop: 171-246
+> > Email: chris.a.mattmann@nasa.gov
+> > WWW:   http://sunset.usc.edu/~mattmann/
+> > ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+> > Adjunct Assistant Professor, Computer Science Department
+> > University of Southern California, Los Angeles, CA 90089 USA
+> > ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+> >
+> >
+>
+>
+>
+> --
+> Thanks,
+> Henry
+>
+
+
+
+-- 
+*
+*Open Source Solutions for Text Engineering
+
+http://digitalpebble.blogspot.com/
+http://www.digitalpebble.com
+
+--002354471334934a2a04a277d0d7--
+
+From gora-dev-return-374-apmail-incubator-gora-dev-archive=incubator.apache.org@incubator.apache.org  Wed May  4 21:04:46 2011
+Return-Path: <gora-dev-return-374-apmail-incubator-gora-dev-archive=incubator.apache.org@incubator.apache.org>
+X-Original-To: apmail-incubator-gora-dev-archive@minotaur.apache.org
+Delivered-To: apmail-incubator-gora-dev-archive@minotaur.apache.org
+Received: from mail.apache.org (hermes.apache.org [140.211.11.3])
+	by minotaur.apache.org (Postfix) with SMTP id 34AB43C44
+	for <apmail-incubator-gora-dev-archive@minotaur.apache.org>; Wed,  4 May 2011 21:04:46 +0000 (UTC)
+Received: (qmail 17092 invoked by uid 500); 4 May 2011 21:04:46 -0000
+Delivered-To: apmail-incubator-gora-dev-archive@incubator.apache.org
+Received: (qmail 17046 invoked by uid 500); 4 May 2011 21:04:45 -0000
+Mailing-List: contact gora-dev-help@incubator.apache.org; run by ezmlm
+Precedence: bulk
+List-Help: <mailto:gora-dev-help@incubator.apache.org>
+List-Unsubscribe: <mailto:gora-dev-unsubscribe@incubator.apache.org>
+List-Post: <mailto:gora-dev@incubator.apache.org>
+List-Id: <gora-dev.incubator.apache.org>
+Reply-To: gora-dev@incubator.apache.org
+Delivered-To: mailing list gora-dev@incubator.apache.org
+Received: (qmail 17026 invoked by uid 99); 4 May 2011 21:04:45 -0000
+Received: from athena.apache.org (HELO athena.apache.org) (140.211.11.136)
+    by apache.org (qpsmtpd/0.29) with ESMTP; Wed, 04 May 2011 21:04:45 +0000
+X-ASF-Spam-Status: No, hits=-0.7 required=5.0
+	tests=FREEMAIL_FROM,RCVD_IN_DNSWL_LOW,RFC_ABUSE_POST,SPF_PASS,T_TO_NO_BRKTS_FREEMAIL
+X-Spam-Check-By: apache.org
+Received-SPF: pass (athena.apache.org: domain of henry.saputra@gmail.com designates 209.85.210.175 as permitted sender)
+Received: from [209.85.210.175] (HELO mail-iy0-f175.google.com) (209.85.210.175)
+    by apache.org (qpsmtpd/0.29) with ESMTP; Wed, 04 May 2011 21:04:41 +0000
+Received: by iye7 with SMTP id 7so1454975iye.6
+        for <gora-dev@incubator.apache.org>; Wed, 04 May 2011 14:04:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:content-type:content-transfer-encoding;
+        bh=SyeXXM3XeQIzkfBn0wPTbEvUH/Zj8sEY8m7AKTJAGV0=;
+        b=tBcPN8SeEXL5I11gTc5VCkul5Kxy4xQryc6QM02Ny23tZ2ikQ2P13+Jw6Zln8YtzJl
+         UvyZZAsQk2pb6ZvT73Vp9Ddkbt17Y8/7ADXsrhCFZ4nyE76l7VKZAAZDda1e0BvQ59sb
+         nRYGKpYtFyMqZ9zbmN4GdFB5agXD/RqlpLO1A=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :content-type:content-transfer-encoding;
+        b=dsn864EXEzlKqyMU6XinPz1yiHvtgRGHRJZGyxBsO2d7fHYN6CIelXMehsMonA+sGR
+         L06aV2rugFHSu4fGntAIKuSNEJM8zEQa7I0PzljtrGujn0398VV4orqUpC3dlNi5OMby
+         8fDwLDIiwVU7VYEzJ6p1JglT33s0zKb+DM3cU=
+MIME-Version: 1.0
+Received: by 10.42.239.6 with SMTP id ku6mr2183172icb.189.1304543061041; Wed,
+ 04 May 2011 14:04:21 -0700 (PDT)
+Received: by 10.42.12.212 with HTTP; Wed, 4 May 2011 14:04:21 -0700 (PDT)
+In-Reply-To: <BANLkTi=KW66Xnnq7oOjku6YB4pGFCeHkqg@mail.gmail.com>
+References: <BANLkTimOauKQ7bbmqnLt1i8MZdEjFotPWg@mail.gmail.com>
+	<BANLkTinYQbpj2OSnq=n6Ks=nNr6Lib_W4g@mail.gmail.com>
+	<FF4B8B72-CD18-4531-944D-E7C932660781@jpl.nasa.gov>
+	<BANLkTikNpza_esn=OUcu_WjvjNYx8BgpBQ@mail.gmail.com>
+	<BANLkTi=KW66Xnnq7oOjku6YB4pGFCeHkqg@mail.gmail.com>
+Date: Wed, 4 May 2011 14:04:21 -0700
+Message-ID: <BANLkTimTjbWHZcHaHb1qQKRM=k6YUu9caw@mail.gmail.com>
+Subject: Re: [ANNOUNCEMENT] Apache Gora 0.1-incubating Released
+From: Henry Saputra <henry.saputra@gmail.com>
+To: gora-dev@incubator.apache.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hi Julien,
+
+I just saw the JIRA case is resolved for the repository.
+
+Need to add ant task to push repository. I would like to ask for help
+to modify the ant/ivy build script to do this.
+
+- Henry
+
+On Wed, May 4, 2011 at 11:56 AM, Julien Nioche
+<lists.digitalpebble@gmail.com> wrote:
+> Hi,
+>
+> Any news on the publication of the artefacts? I've lost track of where we
+> are
+>
+> Thanks
+>
+> Julien
+>
+> On 13 April 2011 06:51, Henry Saputra <henry.saputra@gmail.com> wrote:
+>
+>> INFRA case created for space in repository.apache.org for Gora:
+>> https://issues.apache.org/jira/browse/INFRA-3580
+>>
+>> On Wed, Apr 6, 2011 at 9:43 AM, Mattmann, Chris A (388J)
+>> <chris.a.mattmann@jpl.nasa.gov> wrote:
+>> > Hey Guys,
+>> >
+>> > 1. we should create a JIRA issue for INFRA asking for space for
+>> org.apache.gora on repository.apache.org
+>> > 2. take a look at NUTCH-825 [1] for an example of the config needed to
+>> add to the ant build to publish to repository.apache.org
+>> > 3. once published, we release on the repository.apache.org Nexus serve=
+r
+>> and it's sync'ed to Central in 24-48 hours.
+>> >
+>> > Cheers,
+>> > Chris
+>> >
+>> > [1] http://issues.apache.org/jira/browse/NUTCH-825
+>> >
+>> > On Apr 6, 2011, at 4:49 AM, Julien Nioche wrote:
+>> >
+>> >> Hi,
+>> >>
+>> >> Anything special that needs doing to publish the artifacts so we can
+>> declare
+>> >> a dependency to Gora with Maven / Ivy?
+>> >>
+>> >> Julien
+>> >>
+>> >>
+>> >> On 6 April 2011 04:10, Henry Saputra <henry.saputra@gmail.com> wrote:
+>> >>
+>> >>> Hi All,
+>> >>>
+>> >>> The Gora community has released Apache Gora 0.1-incubating under the
+>> >>> Apache Incubator.
+>> >>>
+>> >>> Apache Gora is an ORM framework for column stores such as Apache HBa=
+se
+>> >>> and Apache Cassandra with a specific focus on Hadoop.
+>> >>>
+>> >>> The source release for 0.1-incubating is available at:
+>> >>>
+>> >>> http://www.apache.org/dist/incubator/gora/0.1-incubating/
+>> >>>
+>> >>> In the initial hours, the release may not be available on all mirror=
+s.
+>> >>> When downloading from a mirror site, please remember to verify the
+>> >>> downloads using signatures found on the Apache site:
+>> >>>
+>> >>>
+>> >>>
+>> http://www.apache.org/dist/incubator/gora//0.1-incubating/KEYS-0.1-incub=
+ating
+>> >>>
+>> >>> For more information on Apache Gora, visit the project home page:
+>> >>>
+>> >>> http://incubator.apache.org/gora/
+>> >>>
+>> >>> --
+>> >>> Thanks,
+>> >>> Henry
+>> >>>
+>> >>
+>> >>
+>> >>
+>> >> --
+>> >> *
+>> >> *Open Source Solutions for Text Engineering
+>> >>
+>> >> http://digitalpebble.blogspot.com/
+>> >> http://www.digitalpebble.com
+>> >
+>> >
+>> > ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+>> > Chris Mattmann, Ph.D.
+>> > Senior Computer Scientist
+>> > NASA Jet Propulsion Laboratory Pasadena, CA 91109 USA
+>> > Office: 171-266B, Mailstop: 171-246
+>> > Email: chris.a.mattmann@nasa.gov
+>> > WWW: =C2=A0 http://sunset.usc.edu/~mattmann/
+>> > ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+>> > Adjunct Assistant Professor, Computer Science Department
+>> > University of Southern California, Los Angeles, CA 90089 USA
+>> > ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+>> >
+>> >
+>>
+>>
+>>
+>> --
+>> Thanks,
+>> Henry
+>>
+>
+>
+>
+> --
+> *
+> *Open Source Solutions for Text Engineering
+>
+> http://digitalpebble.blogspot.com/
+> http://www.digitalpebble.com
+>
+
+
+
+--=20
+Thanks,
+Henry
+
+From gora-dev-return-375-apmail-incubator-gora-dev-archive=incubator.apache.org@incubator.apache.org  Wed May  4 21:07:23 2011
+Return-Path: <gora-dev-return-375-apmail-incubator-gora-dev-archive=incubator.apache.org@incubator.apache.org>
+X-Original-To: apmail-incubator-gora-dev-archive@minotaur.apache.org
+Delivered-To: apmail-incubator-gora-dev-archive@minotaur.apache.org
+Received: from mail.apache.org (hermes.apache.org [140.211.11.3])
+	by minotaur.apache.org (Postfix) with SMTP id A56683CD8
+	for <apmail-incubator-gora-dev-archive@minotaur.apache.org>; Wed,  4 May 2011 21:07:23 +0000 (UTC)
+Received: (qmail 19312 invoked by uid 500); 4 May 2011 21:07:23 -0000
+Delivered-To: apmail-incubator-gora-dev-archive@incubator.apache.org
+Received: (qmail 19279 invoked by uid 500); 4 May 2011 21:07:23 -0000
+Mailing-List: contact gora-dev-help@incubator.apache.org; run by ezmlm
+Precedence: bulk
+List-Help: <mailto:gora-dev-help@incubator.apache.org>
+List-Unsubscribe: <mailto:gora-dev-unsubscribe@incubator.apache.org>
+List-Post: <mailto:gora-dev@incubator.apache.org>
+List-Id: <gora-dev.incubator.apache.org>
+Reply-To: gora-dev@incubator.apache.org
+Delivered-To: mailing list gora-dev@incubator.apache.org
+Received: (qmail 19271 invoked by uid 99); 4 May 2011 21:07:23 -0000
+Received: from nike.apache.org (HELO nike.apache.org) (192.87.106.230)
+    by apache.org (qpsmtpd/0.29) with ESMTP; Wed, 04 May 2011 21:07:23 +0000
+X-ASF-Spam-Status: No, hits=-2.3 required=5.0
+	tests=RCVD_IN_DNSWL_MED,SPF_PASS
+X-Spam-Check-By: apache.org
+Received-SPF: pass (nike.apache.org: local policy)
+Received: from [128.149.139.109] (HELO mail.jpl.nasa.gov) (128.149.139.109)
+    by apache.org (qpsmtpd/0.29) with ESMTP; Wed, 04 May 2011 21:07:16 +0000
+Received: from mail.jpl.nasa.gov (altvirehtstap01.jpl.nasa.gov [128.149.137.72])
+	by smtp.jpl.nasa.gov (Switch-3.4.3/Switch-3.4.3) with ESMTP id p44L6q9t018772
+	(using TLSv1/SSLv3 with cipher RC4-MD5 (128 bits) verified NO)
+	for <gora-dev@incubator.apache.org>; Wed, 4 May 2011 14:06:53 -0700
+Received: from ALTPHYEMBEVSP20.RES.AD.JPL ([128.149.137.82]) by
+ ALTVIREHTSTAP01.RES.AD.JPL ([128.149.137.72]) with mapi; Wed, 4 May 2011
+ 14:06:52 -0700
+From: "Mattmann, Chris A (388J)" <chris.a.mattmann@jpl.nasa.gov>
+To: "gora-dev@incubator.apache.org" <gora-dev@incubator.apache.org>
+Date: Wed, 4 May 2011 14:06:38 -0700
+Subject: Re: [ANNOUNCEMENT] Apache Gora 0.1-incubating Released
+Thread-Topic: [ANNOUNCEMENT] Apache Gora 0.1-incubating Released
+Thread-Index: AcwKnzDRuIGiH4tnSdKmX/lf7AfhFg==
+Message-ID: <37675548-DBBB-4B72-A251-F279B6D05B57@jpl.nasa.gov>
+References: <BANLkTimOauKQ7bbmqnLt1i8MZdEjFotPWg@mail.gmail.com>
+ <BANLkTinYQbpj2OSnq=n6Ks=nNr6Lib_W4g@mail.gmail.com>
+ <FF4B8B72-CD18-4531-944D-E7C932660781@jpl.nasa.gov>
+ <BANLkTikNpza_esn=OUcu_WjvjNYx8BgpBQ@mail.gmail.com>
+ <BANLkTi=KW66Xnnq7oOjku6YB4pGFCeHkqg@mail.gmail.com>
+ <BANLkTimTjbWHZcHaHb1qQKRM=k6YUu9caw@mail.gmail.com>
+In-Reply-To: <BANLkTimTjbWHZcHaHb1qQKRM=k6YUu9caw@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+acceptlanguage: en-US
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-Source-IP: altvirehtstap01.jpl.nasa.gov [128.149.137.72]
+X-Source-Sender: chris.a.mattmann@jpl.nasa.gov
+X-AUTH: Authorized
+X-Virus-Checked: Checked by ClamAV on apache.org
+
+Henry,
+
+I'd be happy to help -- also check out NUTCH-825 [1] where I did this for N=
+utch using the same build mechanism...
+
+Cheers,
+Chris
+
+[1] http://issues.apache.org/jira/browse/NUTCH-825
+
+On May 4, 2011, at 5:04 PM, Henry Saputra wrote:
+
+> Hi Julien,
+>=20
+> I just saw the JIRA case is resolved for the repository.
+>=20
+> Need to add ant task to push repository. I would like to ask for help
+> to modify the ant/ivy build script to do this.
+>=20
+> - Henry
+>=20
+> On Wed, May 4, 2011 at 11:56 AM, Julien Nioche
+> <lists.digitalpebble@gmail.com> wrote:
+>> Hi,
+>>=20
+>> Any news on the publication of the artefacts? I've lost track of where w=
+e
+>> are
+>>=20
+>> Thanks
+>>=20
+>> Julien
+>>=20
+>> On 13 April 2011 06:51, Henry Saputra <henry.saputra@gmail.com> wrote:
+>>=20
+>>> INFRA case created for space in repository.apache.org for Gora:
+>>> https://issues.apache.org/jira/browse/INFRA-3580
+>>>=20
+>>> On Wed, Apr 6, 2011 at 9:43 AM, Mattmann, Chris A (388J)
+>>> <chris.a.mattmann@jpl.nasa.gov> wrote:
+>>>> Hey Guys,
+>>>>=20
+>>>> 1. we should create a JIRA issue for INFRA asking for space for
+>>> org.apache.gora on repository.apache.org
+>>>> 2. take a look at NUTCH-825 [1] for an example of the config needed to
+>>> add to the ant build to publish to repository.apache.org
+>>>> 3. once published, we release on the repository.apache.org Nexus serve=
+r
+>>> and it's sync'ed to Central in 24-48 hours.
+>>>>=20
+>>>> Cheers,
+>>>> Chris
+>>>>=20
+>>>> [1] http://issues.apache.org/jira/browse/NUTCH-825
+>>>>=20
+>>>> On Apr 6, 2011, at 4:49 AM, Julien Nioche wrote:
+>>>>=20
+>>>>> Hi,
+>>>>>=20
+>>>>> Anything special that needs doing to publish the artifacts so we can
+>>> declare
+>>>>> a dependency to Gora with Maven / Ivy?
+>>>>>=20
+>>>>> Julien
+>>>>>=20
+>>>>>=20
+>>>>> On 6 April 2011 04:10, Henry Saputra <henry.saputra@gmail.com> wrote:
+>>>>>=20
+>>>>>> Hi All,
+>>>>>>=20
+>>>>>> The Gora community has released Apache Gora 0.1-incubating under the
+>>>>>> Apache Incubator.
+>>>>>>=20
+>>>>>> Apache Gora is an ORM framework for column stores such as Apache HBa=
+se
+>>>>>> and Apache Cassandra with a specific focus on Hadoop.
+>>>>>>=20
+>>>>>> The source release for 0.1-incubating is available at:
+>>>>>>=20
+>>>>>> http://www.apache.org/dist/incubator/gora/0.1-incubating/
+>>>>>>=20
+>>>>>> In the initial hours, the release may not be available on all mirror=
+s.
+>>>>>> When downloading from a mirror site, please remember to verify the
+>>>>>> downloads using signatures found on the Apache site:
+>>>>>>=20
+>>>>>>=20
+>>>>>>=20
+>>> http://www.apache.org/dist/incubator/gora//0.1-incubating/KEYS-0.1-incu=
+bating
+>>>>>>=20
+>>>>>> For more information on Apache Gora, visit the project home page:
+>>>>>>=20
+>>>>>> http://incubator.apache.org/gora/
+>>>>>>=20
+>>>>>> --
+>>>>>> Thanks,
+>>>>>> Henry
+>>>>>>=20
+>>>>>=20
+>>>>>=20
+>>>>>=20
+>>>>> --
+>>>>> *
+>>>>> *Open Source Solutions for Text Engineering
+>>>>>=20
+>>>>> http://digitalpebble.blogspot.com/
+>>>>> http://www.digitalpebble.com
+>>>>=20
+>>>>=20
+>>>> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+>>>> Chris Mattmann, Ph.D.
+>>>> Senior Computer Scientist
+>>>> NASA Jet Propulsion Laboratory Pasadena, CA 91109 USA
+>>>> Office: 171-266B, Mailstop: 171-246
+>>>> Email: chris.a.mattmann@nasa.gov
+>>>> WWW:   http://sunset.usc.edu/~mattmann/
+>>>> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+>>>> Adjunct Assistant Professor, Computer Science Department
+>>>> University of Southern California, Los Angeles, CA 90089 USA
+>>>> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+>>>>=20
+>>>>=20
+>>>=20
+>>>=20
+>>>=20
+>>> --
+>>> Thanks,
+>>> Henry
+>>>=20
+>>=20
+>>=20
+>>=20
+>> --
+>> *
+>> *Open Source Solutions for Text Engineering
+>>=20
+>> http://digitalpebble.blogspot.com/
+>> http://www.digitalpebble.com
+>>=20
+>=20
+>=20
+>=20
+> --=20
+> Thanks,
+> Henry
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Chris Mattmann, Ph.D.
+Senior Computer Scientist
+NASA Jet Propulsion Laboratory Pasadena, CA 91109 USA
+Office: 171-266B, Mailstop: 171-246
+Email: chris.a.mattmann@nasa.gov
+WWW:   http://sunset.usc.edu/~mattmann/
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Adjunct Assistant Professor, Computer Science Department
+University of Southern California, Los Angeles, CA 90089 USA
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+From gora-dev-return-376-apmail-incubator-gora-dev-archive=incubator.apache.org@incubator.apache.org  Thu May  5 13:29:28 2011
+Return-Path: <gora-dev-return-376-apmail-incubator-gora-dev-archive=incubator.apache.org@incubator.apache.org>
+X-Original-To: apmail-incubator-gora-dev-archive@minotaur.apache.org
+Delivered-To: apmail-incubator-gora-dev-archive@minotaur.apache.org
+Received: from mail.apache.org (hermes.apache.org [140.211.11.3])
+	by minotaur.apache.org (Postfix) with SMTP id 0F6762C25
+	for <apmail-incubator-gora-dev-archive@minotaur.apache.org>; Thu,  5 May 2011 13:29:28 +0000 (UTC)
+Received: (qmail 91535 invoked by uid 500); 5 May 2011 13:29:28 -0000
+Delivered-To: apmail-incubator-gora-dev-archive@incubator.apache.org
+Received: (qmail 91498 invoked by uid 500); 5 May 2011 13:29:27 -0000
+Mailing-List: contact gora-dev-help@incubator.apache.org; run by ezmlm
+Precedence: bulk
+List-Help: <mailto:gora-dev-help@incubator.apache.org>
+List-Unsubscribe: <mailto:gora-dev-unsubscribe@incubator.apache.org>
+List-Post: <mailto:gora-dev@incubator.apache.org>
+List-Id: <gora-dev.incubator.apache.org>
+Reply-To: gora-dev@incubator.apache.org
+Delivered-To: mailing list gora-dev@incubator.apache.org
+Received: (qmail 91485 invoked by uid 99); 5 May 2011 13:29:27 -0000
+Received: from nike.apache.org (HELO nike.apache.org) (192.87.106.230)
+    by apache.org (qpsmtpd/0.29) with ESMTP; Thu, 05 May 2011 13:29:27 +0000
+X-ASF-Spam-Status: No, hits=1.5 required=5.0
+	tests=FREEMAIL_FROM,HTML_MESSAGE,RCVD_IN_DNSWL_LOW,RFC_ABUSE_POST,SPF_PASS,T_TO_NO_BRKTS_FREEMAIL
+X-Spam-Check-By: apache.org
+Received-SPF: pass (nike.apache.org: domain of lists.digitalpebble@gmail.com designates 209.85.216.182 as permitted sender)
+Received: from [209.85.216.182] (HELO mail-qy0-f182.google.com) (209.85.216.182)
+    by apache.org (qpsmtpd/0.29) with ESMTP; Thu, 05 May 2011 13:29:21 +0000
+Received: by qyk27 with SMTP id 27so2004608qyk.6
+        for <gora-dev@incubator.apache.org>; Thu, 05 May 2011 06:29:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:content-type;
+        bh=d368LhFrBh9re8ZqcHdWHaMi1F5Rs1YJ4Ctf9dYNALQ=;
+        b=kBCHuEYwcRRCPKsxpiXc5CLzfUaa8UTzc/tolZ7H3jreK7tJlFpLmmavEpWCGP0oqD
+         +pHhd/K+8Ag3NBHo0PckdSo8E8ftLMTJaU5pnTTPxWlybx8WeEaVVT7uFSsCFsKL5rGG
+         six2pYqlrdZ6e3634my6q4IjR5T8UqeT5msYY=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :content-type;
+        b=vcYHB6CQltV6v/R4s1LPOD57R+qzwl5E9UuXnIG+7DjL7gfndwIkh5Ll9yjgrBfD1V
+         S2HtIn7Y5gwl5Mk5ez3igCNbPYAJUhWbKR1UXe+W+SNOfPRoXk2FC1aoYUUBBh8F7C9X
+         cSNpy2WjrwGxFqpSlWoNkNur3OXg2IFQv6SSc=
+MIME-Version: 1.0
+Received: by 10.224.184.140 with SMTP id ck12mr2352291qab.137.1304602139935;
+ Thu, 05 May 2011 06:28:59 -0700 (PDT)
+Received: by 10.229.229.18 with HTTP; Thu, 5 May 2011 06:28:59 -0700 (PDT)
+In-Reply-To: <37675548-DBBB-4B72-A251-F279B6D05B57@jpl.nasa.gov>
+References: <BANLkTimOauKQ7bbmqnLt1i8MZdEjFotPWg@mail.gmail.com>
+	<BANLkTinYQbpj2OSnq=n6Ks=nNr6Lib_W4g@mail.gmail.com>
+	<FF4B8B72-CD18-4531-944D-E7C932660781@jpl.nasa.gov>
+	<BANLkTikNpza_esn=OUcu_WjvjNYx8BgpBQ@mail.gmail.com>
+	<BANLkTi=KW66Xnnq7oOjku6YB4pGFCeHkqg@mail.gmail.com>
+	<BANLkTimTjbWHZcHaHb1qQKRM=k6YUu9caw@mail.gmail.com>
+	<37675548-DBBB-4B72-A251-F279B6D05B57@jpl.nasa.gov>
+Date: Thu, 5 May 2011 14:28:59 +0100
+Message-ID: <BANLkTim9njzvaN8LTddXtF5_-HcV64rtEQ@mail.gmail.com>
+Subject: Re: [ANNOUNCEMENT] Apache Gora 0.1-incubating Released
+From: Julien Nioche <lists.digitalpebble@gmail.com>
+To: gora-dev@incubator.apache.org
+Content-Type: multipart/alternative; boundary=20cf303b40451fc2e104a2875b59
+X-Virus-Checked: Checked by ClamAV on apache.org
+
+--20cf303b40451fc2e104a2875b59
+Content-Type: text/plain; charset=ISO-8859-1
+
+There is an interesting section on ANT+ivy in the doc that Brian posted :
+http://www.apache.org/dev/publishing-maven-artifacts.html#ant
+
+Jul
+
+
+On 4 May 2011 22:06, Mattmann, Chris A (388J) <chris.a.mattmann@jpl.nasa.gov
+> wrote:
+
+> Henry,
+>
+> I'd be happy to help -- also check out NUTCH-825 [1] where I did this for
+> Nutch using the same build mechanism...
+>
+> Cheers,
+> Chris
+>
+> [1] http://issues.apache.org/jira/browse/NUTCH-825
+>
+> On May 4, 2011, at 5:04 PM, Henry Saputra wrote:
+>
+> > Hi Julien,
+> >
+> > I just saw the JIRA case is resolved for the repository.
+> >
+> > Need to add ant task to push repository. I would like to ask for help
+> > to modify the ant/ivy build script to do this.
+> >
+> > - Henry
+> >
+> > On Wed, May 4, 2011 at 11:56 AM, Julien Nioche
+> > <lists.digitalpebble@gmail.com> wrote:
+> >> Hi,
+> >>
+> >> Any news on the publication of the artefacts? I've lost track of where
+> we
+> >> are
+> >>
+> >> Thanks
+> >>
+> >> Julien
+> >>
+> >> On 13 April 2011 06:51, Henry Saputra <henry.saputra@gmail.com> wrote:
+> >>
+> >>> INFRA case created for space in repository.apache.org for Gora:
+> >>> https://issues.apache.org/jira/browse/INFRA-3580
+> >>>
+> >>> On Wed, Apr 6, 2011 at 9:43 AM, Mattmann, Chris A (388J)
+> >>> <chris.a.mattmann@jpl.nasa.gov> wrote:
+> >>>> Hey Guys,
+> >>>>
+> >>>> 1. we should create a JIRA issue for INFRA asking for space for
+> >>> org.apache.gora on repository.apache.org
+> >>>> 2. take a look at NUTCH-825 [1] for an example of the config needed to
+> >>> add to the ant build to publish to repository.apache.org
+> >>>> 3. once published, we release on the repository.apache.org Nexus
+> server
+> >>> and it's sync'ed to Central in 24-48 hours.
+> >>>>
+> >>>> Cheers,
+> >>>> Chris
+> >>>>
+> >>>> [1] http://issues.apache.org/jira/browse/NUTCH-825
+> >>>>
+> >>>> On Apr 6, 2011, at 4:49 AM, Julien Nioche wrote:
+> >>>>
+> >>>>> Hi,
+> >>>>>
+> >>>>> Anything special that needs doing to publish the artifacts so we can
+> >>> declare
+> >>>>> a dependency to Gora with Maven / Ivy?
+> >>>>>
+> >>>>> Julien
+> >>>>>
+> >>>>>
+> >>>>> On 6 April 2011 04:10, Henry Saputra <henry.saputra@gmail.com>
+> wrote:
+> >>>>>
+> >>>>>> Hi All,
+> >>>>>>
+> >>>>>> The Gora community has released Apache Gora 0.1-incubating under the
+> >>>>>> Apache Incubator.
+> >>>>>>
+> >>>>>> Apache Gora is an ORM framework for column stores such as Apache
+> HBase
+> >>>>>> and Apache Cassandra with a specific focus on Hadoop.
+> >>>>>>
+> >>>>>> The source release for 0.1-incubating is available at:
+> >>>>>>
+> >>>>>> http://www.apache.org/dist/incubator/gora/0.1-incubating/
+> >>>>>>
+> >>>>>> In the initial hours, the release may not be available on all
+> mirrors.
+> >>>>>> When downloading from a mirror site, please remember to verify the
+> >>>>>> downloads using signatures found on the Apache site:
+> >>>>>>
+> >>>>>>
+> >>>>>>
+> >>>
+> http://www.apache.org/dist/incubator/gora//0.1-incubating/KEYS-0.1-incubating
+> >>>>>>
+> >>>>>> For more information on Apache Gora, visit the project home page:
+> >>>>>>
+> >>>>>> http://incubator.apache.org/gora/
+> >>>>>>
+> >>>>>> --
+> >>>>>> Thanks,
+> >>>>>> Henry
+> >>>>>>
+> >>>>>
+> >>>>>
+> >>>>>
+> >>>>> --
+> >>>>> *
+> >>>>> *Open Source Solutions for Text Engineering
+> >>>>>
+> >>>>> http://digitalpebble.blogspot.com/
+> >>>>> http://www.digitalpebble.com
+> >>>>
+> >>>>
+> >>>> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+> >>>> Chris Mattmann, Ph.D.
+> >>>> Senior Computer Scientist
+> >>>> NASA Jet Propulsion Laboratory Pasadena, CA 91109 USA
+> >>>> Office: 171-266B, Mailstop: 171-246
+> >>>> Email: chris.a.mattmann@nasa.gov
+> >>>> WWW:   http://sunset.usc.edu/~mattmann/
+> >>>> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+> >>>> Adjunct Assistant Professor, Computer Science Department
+> >>>> University of Southern California, Los Angeles, CA 90089 USA
+> >>>> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+> >>>>
+> >>>>
+> >>>
+> >>>
+> >>>
+> >>> --
+> >>> Thanks,
+> >>> Henry
+> >>>
+> >>
+> >>
+> >>
+> >> --
+> >> *
+> >> *Open Source Solutions for Text Engineering
+> >>
+> >> http://digitalpebble.blogspot.com/
+> >> http://www.digitalpebble.com
+> >>
+> >
+> >
+> >
+> > --
+> > Thanks,
+> > Henry
+>
+>
+> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+> Chris Mattmann, Ph.D.
+> Senior Computer Scientist
+> NASA Jet Propulsion Laboratory Pasadena, CA 91109 USA
+> Office: 171-266B, Mailstop: 171-246
+> Email: chris.a.mattmann@nasa.gov
+> WWW:   http://sunset.usc.edu/~mattmann/
+> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+> Adjunct Assistant Professor, Computer Science Department
+> University of Southern California, Los Angeles, CA 90089 USA
+> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+>
+>
+
+
+-- 
+*
+*Open Source Solutions for Text Engineering
+
+http://digitalpebble.blogspot.com/
+http://www.digitalpebble.com
+
+--20cf303b40451fc2e104a2875b59--
+
+From gora-dev-return-377-apmail-incubator-gora-dev-archive=incubator.apache.org@incubator.apache.org  Thu May 19 19:03:06 2011
+Return-Path: <gora-dev-return-377-apmail-incubator-gora-dev-archive=incubator.apache.org@incubator.apache.org>
+X-Original-To: apmail-incubator-gora-dev-archive@minotaur.apache.org
+Delivered-To: apmail-incubator-gora-dev-archive@minotaur.apache.org
+Received: from mail.apache.org (hermes.apache.org [140.211.11.3])
+	by minotaur.apache.org (Postfix) with SMTP id BF11B4646
+	for <apmail-incubator-gora-dev-archive@minotaur.apache.org>; Thu, 19 May 2011 19:03:06 +0000 (UTC)
+Received: (qmail 35793 invoked by uid 500); 19 May 2011 19:03:06 -0000
+Delivered-To: apmail-incubator-gora-dev-archive@incubator.apache.org
+Received: (qmail 35772 invoked by uid 500); 19 May 2011 19:03:06 -0000
+Mailing-List: contact gora-dev-help@incubator.apache.org; run by ezmlm
+Precedence: bulk
+List-Help: <mailto:gora-dev-help@incubator.apache.org>
+List-Unsubscribe: <mailto:gora-dev-unsubscribe@incubator.apache.org>
+List-Post: <mailto:gora-dev@incubator.apache.org>
+List-Id: <gora-dev.incubator.apache.org>
+Reply-To: gora-dev@incubator.apache.org
+Delivered-To: mailing list gora-dev@incubator.apache.org
+Received: (qmail 35764 invoked by uid 99); 19 May 2011 19:03:06 -0000
+Received: from nike.apache.org (HELO nike.apache.org) (192.87.106.230)
+    by apache.org (qpsmtpd/0.29) with ESMTP; Thu, 19 May 2011 19:03:06 +0000
+X-ASF-Spam-Status: No, hits=-2.3 required=5.0
+	tests=RCVD_IN_DNSWL_MED,SPF_PASS
+X-Spam-Check-By: apache.org
+Received-SPF: pass (nike.apache.org: local policy)
+Received: from [128.149.139.106] (HELO mail.jpl.nasa.gov) (128.149.139.106)
+    by apache.org (qpsmtpd/0.29) with ESMTP; Thu, 19 May 2011 19:02:58 +0000
+Received: from mail.jpl.nasa.gov (altvirehtstap01.jpl.nasa.gov [128.149.137.72])
+	by smtp.jpl.nasa.gov (Switch-3.4.3/Switch-3.4.3) with ESMTP id p4JJ2XSE026254
+	(using TLSv1/SSLv3 with cipher RC4-MD5 (128 bits) verified NO)
+	for <gora-dev@incubator.apache.org>; Thu, 19 May 2011 12:02:34 -0700
+Received: from ALTPHYEMBEVSP20.RES.AD.JPL ([128.149.137.82]) by
+ ALTVIREHTSTAP01.RES.AD.JPL ([128.149.137.72]) with mapi; Thu, 19 May 2011
+ 12:02:29 -0700
+From: "Mattmann, Chris A (388J)" <chris.a.mattmann@jpl.nasa.gov>
+To: "gora-dev@incubator.apache.org" <gora-dev@incubator.apache.org>
+Date: Thu, 19 May 2011 12:02:10 -0700
+Subject: Fwd: some guidance needed
+Thread-Topic: some guidance needed
+Thread-Index: AcwWV0yvwS08+oiMT0mFQWmRIXhU5Q==
+Message-ID: <BEB03AE6-C879-4C12-9FCE-8C73F3DE2FBA@jpl.nasa.gov>
+References: <BANLkTimtV6RkPe3tb6x6Xfsuvqk9+1JzOw@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+acceptlanguage: en-US
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-Source-IP: altvirehtstap01.jpl.nasa.gov [128.149.137.72]
+X-Source-Sender: chris.a.mattmann@jpl.nasa.gov
+X-AUTH: Authorized
+X-Virus-Checked: Checked by ClamAV on apache.org
+
+CC to gora-dev...
+
+Begin forwarded message:
+
+> From: Robert Burrell Donkin <robertburrelldonkin@gmail.com>
+> Date: May 19, 2011 11:53:16 AM PDT
+> To: "common-user@hadoop.apache.org" <common-user@hadoop.apache.org>
+> Subject: Re: some guidance needed
+> Reply-To: "common-user@hadoop.apache.org" <common-user@hadoop.apache.org>
+>=20
+> On Thu, May 19, 2011 at 12:04 PM, Ioan Eugen Stan <stan.ieugen@gmail.com>=
+ wrote:
+>> I have forwarded this discussion to my mentors so they are informed
+>=20
+> (I've hopped onto this list so no need to remember to copy me into the
+> thread ;-)
+>=20
+> <snip>
+>=20
+>> Eric, one of my mentors, suggested I use Gora for
+>> this and after a quick look at Gora I saw that it is an ORM for HBase
+>> and Cassandra which will allow me switch between them. The downside
+>> with this is that Gora is still incubating so a piece of advice about
+>> using it or not is welcomed. I will also ask on the Gora mailing list
+>> to see how things are there.
+>=20
+> (I suspect there will be a measure of experimentation required in this
+> project, so don't be afraid to try a spike or two)
+>=20
+>>>> I would encourage you to look at a system like HBase for your mail
+>>>> backend. HDFS doesn't work well with lots of little files, and also
+>>>> doesn't support random update, so existing formats like Maildir
+>>>> wouldn't be a good fit.
+>=20
+> (Apache James closer to the Microsoft Exchange space than traditional
+> *nix mail user agents)
+>=20
+>> I don't think I understand correctly what you mean by random updates.
+>> E-mails are immutable so once written they are not going to be
+>> updated. But if you are referring to the fact that lots of (small)
+>> files will be written in a directory and that this can be a problem
+>> then I get it. This will also mean that mailbox format (all emails in
+>> one file) will be more inappropriate than Maildir. But since e-mails
+>> are immutable and adding a mail to the mailbox means appending a small
+>> piece of data to the file this should not be a problem if Hadoop has
+>> append.
+>=20
+> Essentially, there are two classes of data that mail storage requires
+>=20
+> 1. read only MIME documents (mail messages) embedding meta-data (headers)
+> 2. read-write meta-data sets about each document including flags for
+> each (virtual) mail directory containing the document
+>=20
+> The documents are searched rarely. The meta-data sets are read often
+> but written rarely.
+>=20
+> I suspect that emails are relatively small in Hadoop terms, and are
+> often numerous. Might be interesting to see how a tuned HDFS instance
+> performs when storing large numbers of small MIME documents. Should be
+> easy enough to set up an experiment to benchmark. (I wonder whether a
+> RESTful distributed storage solution might end up working better.)
+>=20
+> I suspect that the read-write meta-data sets will need HBase (or
+> Cassandra). Would need to think carefully about design, I think.
+>=20
+>> The presentation on Vimeo it stated that HDFS 0.19 did not had append,
+>> I don't know yet what is the status on that, but things are a little
+>> brighter. You could have a mailbox file that could grow to a very
+>> large size. This will lead to all the users emails into one big file
+>> that is easy to manage, the only thing that it's missing is the
+>> fetching the emails. Since emails are appended to the file (inbox) as
+>> they come, and you usually are interested in the latest emails
+>> received you could just read the tail of the file and do some indexing
+>> based on that.
+>=20
+> I'm not hopeful about adopting an append based approach. (Might be
+> made to work but I suspect that the locking required for IMAP or POP3
+> is likely to kill performance.)
+>=20
+> Robert
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Chris Mattmann, Ph.D.
+Senior Computer Scientist
+NASA Jet Propulsion Laboratory Pasadena, CA 91109 USA
+Office: 171-266B, Mailstop: 171-246
+Email: chris.a.mattmann@nasa.gov
+WWW:   http://sunset.usc.edu/~mattmann/
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Adjunct Assistant Professor, Computer Science Department
+University of Southern California, Los Angeles, CA 90089 USA
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+From gora-dev-return-378-apmail-incubator-gora-dev-archive=incubator.apache.org@incubator.apache.org  Mon May 30 19:55:29 2011
+Return-Path: <gora-dev-return-378-apmail-incubator-gora-dev-archive=incubator.apache.org@incubator.apache.org>
+X-Original-To: apmail-incubator-gora-dev-archive@minotaur.apache.org
+Delivered-To: apmail-incubator-gora-dev-archive@minotaur.apache.org
+Received: from mail.apache.org (hermes.apache.org [140.211.11.3])
+	by minotaur.apache.org (Postfix) with SMTP id EBAD2690E
+	for <apmail-incubator-gora-dev-archive@minotaur.apache.org>; Mon, 30 May 2011 19:55:28 +0000 (UTC)
+Received: (qmail 60072 invoked by uid 500); 30 May 2011 19:55:28 -0000
+Delivered-To: apmail-incubator-gora-dev-archive@incubator.apache.org
+Received: (qmail 60033 invoked by uid 500); 30 May 2011 19:55:28 -0000
+Mailing-List: contact gora-dev-help@incubator.apache.org; run by ezmlm
+Precedence: bulk
+List-Help: <mailto:gora-dev-help@incubator.apache.org>
+List-Unsubscribe: <mailto:gora-dev-unsubscribe@incubator.apache.org>
+List-Post: <mailto:gora-dev@incubator.apache.org>
+List-Id: <gora-dev.incubator.apache.org>
+Reply-To: gora-dev@incubator.apache.org
+Delivered-To: mailing list gora-dev@incubator.apache.org
+Received: (qmail 60025 invoked by uid 99); 30 May 2011 19:55:28 -0000
+Received: from athena.apache.org (HELO athena.apache.org) (140.211.11.136)
+    by apache.org (qpsmtpd/0.29) with ESMTP; Mon, 30 May 2011 19:55:28 +0000
+X-ASF-Spam-Status: No, hits=-2000.0 required=5.0
+	tests=ALL_TRUSTED,T_RP_MATCHES_RCVD
+X-Spam-Check-By: apache.org
+Received: from [140.211.11.116] (HELO hel.zones.apache.org) (140.211.11.116)
+    by apache.org (qpsmtpd/0.29) with ESMTP; Mon, 30 May 2011 19:55:27 +0000
+Received: from hel.zones.apache.org (hel.zones.apache.org [140.211.11.116])
+	by hel.zones.apache.org (Postfix) with ESMTP id 67A90E92A1
+	for <gora-dev@incubator.apache.org>; Mon, 30 May 2011 19:54:47 +0000 (UTC)
+Date: Mon, 30 May 2011 19:54:47 +0000 (UTC)
+From: "Henry Saputra (JIRA)" <jira@apache.org>
+To: gora-dev@incubator.apache.org
+Message-ID: <1134384623.54035.1306785287420.JavaMail.tomcat@hel.zones.apache.org>
+In-Reply-To: <418554584.38159.1302108065722.JavaMail.tomcat@hel.zones.apache.org>
+Subject: [jira] [Commented] (GORA-32) Map type with long values generates
+ non-compilable Java class
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-JIRA-FingerPrint: 30527f35849b9dde25b450d4833f0394
+
+
+    [ https://issues.apache.org/jira/browse/GORA-32?page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel&focusedCommentId=13041256#comment-13041256 ] 
+
+Henry Saputra commented on GORA-32:
+-----------------------------------
+
+Would you mind generating the diff from the http://svn.apache.org/repos/asf/incubator/gora/trunk directory?
+
+> Map type with long values generates non-compilable Java class
+> -------------------------------------------------------------
+>
+>                 Key: GORA-32
+>                 URL: https://issues.apache.org/jira/browse/GORA-32
+>             Project: Gora
+>          Issue Type: Bug
+>          Components: schema
+>    Affects Versions: 0.1-incubating
+>            Reporter: Yves Langisch
+>         Attachments: unboxing.patch
+>
+>
+> I have the following Avro JSON schema:
+> {
+>     "type": "record",
+>     "name": "Request",
+>     "namespace": "ch.test.generated",
+>     "fields" : [
+>         {
+>             "name": "data",
+>             "type": {
+>                 "type": "map",
+>                 "values": "long"
+>             }
+>         }
+>     ]
+> }
+> Compiling the schema I get a Java class that does not compile. The problem is that primitive types are not allowed in generic maps:
+> ...
+>   public Map<Utf8, long> getData() {
+>     return (Map<Utf8, long>) get(0);
+>   }
+> ...
+> The issue seems to be that in the {{GoraCompiler}} class the unboxed types are used.
+
+--
+This message is automatically generated by JIRA.
+For more information on JIRA, see: http://www.atlassian.com/software/jira
+
+From gora-dev-return-379-apmail-incubator-gora-dev-archive=incubator.apache.org@incubator.apache.org  Mon May 30 20:01:28 2011
+Return-Path: <gora-dev-return-379-apmail-incubator-gora-dev-archive=incubator.apache.org@incubator.apache.org>
+X-Original-To: apmail-incubator-gora-dev-archive@minotaur.apache.org
+Delivered-To: apmail-incubator-gora-dev-archive@minotaur.apache.org
+Received: from mail.apache.org (hermes.apache.org [140.211.11.3])
+	by minotaur.apache.org (Postfix) with SMTP id 9F23261DB
+	for <apmail-incubator-gora-dev-archive@minotaur.apache.org>; Mon, 30 May 2011 20:01:28 +0000 (UTC)
+Received: (qmail 68176 invoked by uid 500); 30 May 2011 20:01:28 -0000
+Delivered-To: apmail-incubator-gora-dev-archive@incubator.apache.org
+Received: (qmail 68148 invoked by uid 500); 30 May 2011 20:01:28 -0000
+Mailing-List: contact gora-dev-help@incubator.apache.org; run by ezmlm
+Precedence: bulk
+List-Help: <mailto:gora-dev-help@incubator.apache.org>
+List-Unsubscribe: <mailto:gora-dev-unsubscribe@incubator.apache.org>
+List-Post: <mailto:gora-dev@incubator.apache.org>
+List-Id: <gora-dev.incubator.apache.org>
+Reply-To: gora-dev@incubator.apache.org
+Delivered-To: mailing list gora-dev@incubator.apache.org
+Received: (qmail 68140 invoked by uid 99); 30 May 2011 20:01:28 -0000
+Received: from athena.apache.org (HELO athena.apache.org) (140.211.11.136)
+    by apache.org (qpsmtpd/0.29) with ESMTP; Mon, 30 May 2011 20:01:28 +0000
+X-ASF-Spam-Status: No, hits=-2000.0 required=5.0
+	tests=ALL_TRUSTED,T_RP_MATCHES_RCVD
+X-Spam-Check-By: apache.org
+Received: from [140.211.11.116] (HELO hel.zones.apache.org) (140.211.11.116)
+    by apache.org (qpsmtpd/0.29) with ESMTP; Mon, 30 May 2011 20:01:27 +0000
+Received: from hel.zones.apache.org (hel.zones.apache.org [140.211.11.116])
+	by hel.zones.apache.org (Postfix) with ESMTP id 78FA0E94D6
+	for <gora-dev@incubator.apache.org>; Mon, 30 May 2011 20:00:47 +0000 (UTC)
+Date: Mon, 30 May 2011 20:00:47 +0000 (UTC)
+From: "Henry Saputra (JIRA)" <jira@apache.org>
+To: gora-dev@incubator.apache.org
+Message-ID: <139527871.54074.1306785647491.JavaMail.tomcat@hel.zones.apache.org>
+In-Reply-To: <1751628156.9477.1299711419888.JavaMail.tomcat@hel.zones.apache.org>
+Subject: [jira] [Commented] (GORA-27) Optionally add license headers to
+ generated files
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-JIRA-FingerPrint: 30527f35849b9dde25b450d4833f0394
+
+
+    [ https://issues.apache.org/jira/browse/GORA-27?page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel&focusedCommentId=13041262#comment-13041262 ] 
+
+Henry Saputra commented on GORA-27:
+-----------------------------------
+
+Andrzej, have you started to work on this? If yes I could assign it to you.
+
+> Optionally add license headers to generated files
+> -------------------------------------------------
+>
+>                 Key: GORA-27
+>                 URL: https://issues.apache.org/jira/browse/GORA-27
+>             Project: Gora
+>          Issue Type: Improvement
+>          Components: schema
+>    Affects Versions: 0.1-incubating, 0.2-incubating
+>            Reporter: Andrzej Bialecki 
+>             Fix For: 0.2-incubating
+>
+>
+> Gora compiler should allow adding license headers to generated files.
+
+--
+This message is automatically generated by JIRA.
+For more information on JIRA, see: http://www.atlassian.com/software/jira
+

@@ -1,23 +1,11 @@
-#include <pthread.h>
 #include <stdlib.h>
-#include <sys/stat.h>
 #include <stdio.h>
 #include <string.h>
 #include "emailfilter/utils.h"
 #include "emailfilter/date.h"
 #include "emailfilter/filter.h"
 #include "emailfilter/email.h"
-
-
-typedef struct emailfilterThreadWorkload {
-    char* path;
-    size_t start_index;
-    size_t end_index;
-    emailfilterMessage** list_mes;
-    int reserved_num_mes;
-    int real_num_mes;
-    emailfilterParams* params;
-} emailfilterThreadWorkload;
+#include "filter.h"
 
 bool to_keep(emailfilterMessage* mes, emailfilterParams* params) {
     if (emailfilter_compare_date(mes->date, params->begin) < 0) {
@@ -59,17 +47,34 @@ void *thread(void *arg) {
             tw->list_mes[tw->real_num_mes]->subject = NULL;
             tw->list_mes[tw->real_num_mes]->date = NULL;
 
-            while (!emailfilter_is_message_end(tw->list_mes[tw->real_num_mes])) {  // считать три элемента (subject, date, to)
+            while (!emailfilter_is_message_end(tw->list_mes[tw->real_num_mes])) {
+                // считать три элемента (subject, date, to)
                 emailfilter_skip_to_new_line(file, stream_buffer);
                 emailfilter_parse_message(stream_buffer, tw->list_mes[tw->real_num_mes], file);
             }
-            if (to_keep(tw->list_mes[tw->real_num_mes], tw->params))
+            if (to_keep(tw->list_mes[tw->real_num_mes], tw->params)) {
                 tw->real_num_mes++;
+            } else {
+                for (int i = 0; i < tw->list_mes[tw->real_num_mes]->recepients.size; i++) {
+                    free(tw->list_mes[tw->real_num_mes]->recepients.emails[i]);
+                }
+                free(tw->list_mes[tw->real_num_mes]->recepients.emails);
+                free(tw->list_mes[tw->real_num_mes]->subject);
+                free(tw->list_mes[tw->real_num_mes]->date);
+                free(tw->list_mes[tw->real_num_mes]);
+            }
         }
 
-        if (ftell(file) >= tw->end_index)
+        if (ftell(file) >= tw->end_index) {
+            fclose(file);
+            free(stream_buffer->buffer);
+            free(stream_buffer);
             return NULL;
+        }
     }
+    fclose(file);
+    free(stream_buffer->buffer);
+    free(stream_buffer);
     return NULL;
 }
 
@@ -77,80 +82,4 @@ int compare(const void* message1, const void* message2) {  // функция с�
     emailfilterMessage* mes1 = *(emailfilterMessage**)(message1);
     emailfilterMessage* mes2 = *(emailfilterMessage**)(message2);
     return emailfilter_compare_date(mes1->date, mes2->date);
-}
-
-emailfilterResult* emailfilter_filter(char* path, emailfilterParams* params, uint16_t num_threads) {
-    struct stat finfo;
-    stat(path, &finfo);
-    emailfilterResult* result = (emailfilterResult*) malloc(sizeof(emailfilterResult));
-    if (result == NULL)
-        exit(EXIT_FAILURE);
-
-    // sequential
-    if (num_threads <= 1) {
-        emailfilterThreadWorkload tw;
-        tw.path = path;
-        tw.start_index = 0;
-        tw.end_index = (size_t)finfo.st_size;
-        tw.reserved_num_mes = 0;
-        tw.real_num_mes = 0;
-        tw.list_mes = NULL;
-        tw.params = params;
-        thread(&tw);
-        result->size = tw.real_num_mes;
-        result->emails = tw.list_mes;
-    } else {
-        int bytes_per_thread = (int)finfo.st_size / num_threads;
-        // выделяем память под массив идентификаторов потоков
-        pthread_t* threads = (pthread_t*) malloc(num_threads * sizeof(pthread_t));
-        if (threads == NULL)
-            exit(EXIT_FAILURE);
-        // сколько потоков - столько и структур с данными
-        emailfilterThreadWorkload* thread_data =
-                (emailfilterThreadWorkload*) malloc(num_threads * sizeof(emailfilterThreadWorkload));
-        if (thread_data == NULL)
-            exit(EXIT_FAILURE);
-
-        // инициализируем структуры потоков
-        for (int i = 0; i < num_threads; i++) {
-            thread_data[i].path = path;
-            thread_data[i].start_index = i * bytes_per_thread;
-            thread_data[i].end_index = (i + 1) * bytes_per_thread;
-            thread_data[i].reserved_num_mes = 0;
-            thread_data[i].real_num_mes = 0;
-            thread_data[i].list_mes = NULL;
-            thread_data[i].params = params;
-
-            // запускаем поток
-            pthread_create(&(threads[i]), NULL, thread, &thread_data[i]);
-        }
-        // ожидаем выполнение всех потоков и склеиваем результат
-        size_t total_messages = 0;
-        for (int i = 0; i < num_threads; i++) {
-            pthread_join(threads[i], NULL);
-            total_messages += thread_data[i].real_num_mes;
-        }
-
-        result->size = total_messages;
-        result->emails = (emailfilterMessage**)malloc(sizeof(emailfilterMessage*) * total_messages);
-        if (result->emails == NULL)
-            exit(EXIT_FAILURE);
-
-        size_t next_ind = 0;
-        for (int i = 0; i < num_threads; i++)
-            if (thread_data[i].list_mes != NULL) {
-            memmove(&(result->emails[next_ind]), thread_data[i].list_mes,
-                    sizeof(emailfilterMessage*) * thread_data[i].real_num_mes);
-            next_ind += thread_data[i].real_num_mes;
-        }
-
-        // освобождаем память
-        for (size_t i = 0; i < num_threads; i++)
-            free(thread_data[i].list_mes);
-        free(threads);
-        free(thread_data);
-    }
-    // сортируем сообщения по дате
-    qsort(result->emails, result->size, sizeof(emailfilterMessage*), compare);
-    return result;
 }

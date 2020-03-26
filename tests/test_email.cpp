@@ -22,11 +22,24 @@ void free_message(emailfilterMessage* message) {
     free_recepients(&(message->recepients));
 }
 
-TEST(email1, mes_end_test) {
-    auto* mes = (emailfilterMessage*) malloc(sizeof(emailfilterMessage));
-    mes->subject = NULL;
-    mes->recepients.emails = NULL;
-    mes->date = NULL;
+class test_fixture_for_parse_mes: public ::testing::Test {
+public:
+    emailfilterMessage* mes {};
+    void SetUp() override {
+        mes = (emailfilterMessage*) malloc(sizeof(emailfilterMessage));
+        mes->subject = NULL;
+        mes->recepients.emails = NULL;
+        mes->date = NULL;
+    }
+
+    void TearDown() override{
+        free_message(mes);
+        free(mes);
+    }
+};
+
+TEST_F(test_fixture_for_parse_mes, unit_test1) {
+
     ASSERT_FALSE(emailfilter_is_message_end(mes));
 
     char line[] = "subject";
@@ -51,8 +64,7 @@ TEST(email1, mes_end_test) {
     mes->date->second = 1;
     ASSERT_TRUE(emailfilter_is_message_end(mes));
 
-    free_message(mes);
-    free(mes);
+
 }
 
 TEST(email2, parse_mes_test)
@@ -97,22 +109,34 @@ TEST(email2, parse_mes_test)
     free(buffer);
 }
 
-TEST(email3, parse_recep_test)
+class test_fixture_for_parse_recep: public ::testing::Test {
+public:
+    emailfilterRecepients* recepients{};
+    void SetUp() override {
+        recepients = (emailfilterRecepients*)(malloc(sizeof(emailfilterRecepients)));
+        recepients->emails = NULL;
+        recepients->size = 0;
+    }
+
+    void TearDown() override{
+        free_recepients(recepients);
+        free(recepients);
+    }
+};
+
+TEST_F (test_fixture_for_parse_recep, test1)
 {
     char line1[] = "announce@apache.org";
-    auto* recepients = (emailfilterRecepients*)(malloc(sizeof(emailfilterRecepients)));
-    recepients->emails = NULL;
-    recepients->size = 0;
-
     emailfilter_parse_recepients(line1, recepients);
     ASSERT_STREQ(recepients->emails[0], line1);
-    free_recepients(recepients);
 
+}
+
+TEST_F (test_fixture_for_parse_recep, test2){
     char line2[] = "announce@apache.org, announce@apache.org";
     emailfilter_parse_recepients(line2, recepients);
     ASSERT_STREQ(recepients->emails[0], "announce@apache.org");
     ASSERT_STREQ(recepients->emails[1], "announce@apache.org");
-    free_recepients(recepients);
-    free(recepients);
 }
+
 

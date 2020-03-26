@@ -30,27 +30,36 @@ TEST(date2, is_date_test)
     ASSERT_FALSE(emailfilter_is_date(29, (emailfilterMonth) 2, 2019, 1, 1, 1));
 }
 
-TEST(date3, compare_date_test)
+class test_fixture_for_compare_date: public ::testing::Test {
+public:
+    emailfilterDate *date1 {};
+    emailfilterDate *date2 {};
+    void SetUp() override {
+        date1 = (emailfilterDate *) malloc(sizeof(emailfilterDate));
+        date1->day = 1;
+        date1->month = (emailfilterMonth)1;
+        date1->year = 2020;
+        date1->hour = 1;
+        date1->minute = 1;
+        date1->second = 1;
+        date2 = (emailfilterDate *) malloc(sizeof(emailfilterDate));
+        date2->day = 2;
+        date2->month = (emailfilterMonth)1;
+        date2->year = 2020;
+        date2->hour = 1;
+        date2->minute = 1;
+        date2->second = 1;
+    }
+        void TearDown() override {
+            free(date1);
+            free(date2);
+    }
+};
+
+TEST_F(test_fixture_for_compare_date, unit_test)
 {
-    emailfilterDate *date1 = (emailfilterDate *) malloc(sizeof(emailfilterDate));
-    date1->day = 1;
-    date1->month = (emailfilterMonth)1;
-    date1->year = 2020;
-    date1->hour = 1;
-    date1->minute = 1;
-    date1->second = 1;
     ASSERT_EQ(emailfilter_compare_date(date1, date1), 0);
+    ASSERT_LT(emailfilter_compare_date(date1, date2), 0);
+    ASSERT_GT(emailfilter_compare_date(date2, date1), 0);
 
-    emailfilterDate *date2 = (emailfilterDate *) malloc(sizeof(emailfilterDate));
-    date2->day = 2;
-    date2->month = (emailfilterMonth)1;
-    date2->year = 2020;
-    date2->hour = 1;
-    date2->minute = 1;
-    date2->second = 1;
-    ASSERT_EQ(emailfilter_compare_date(date1, date2), -1);
-    ASSERT_EQ(emailfilter_compare_date(date2, date1), 1);
-
-    free(date1);
-    free(date2);
 }
